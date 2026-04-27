@@ -50,9 +50,23 @@ a {
 }
 
 .brand {
-  font-size: 1.2rem;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   color: var(--accent-soft);
+}
+
+.brand-logo {
+  display: block;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.brand-text {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .nav-links {
@@ -166,8 +180,7 @@ h2 {
   margin-top: 0.75rem;
 }
 
-.contact-links a,
-.footer-links a {
+.contact-links a {
   color: var(--accent);
 }
 
@@ -203,7 +216,7 @@ h2 {
   margin-top: 1.1rem;
   padding: 1.4rem 0.2rem 0.5rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1rem;
   flex-wrap: wrap;
 }
@@ -221,13 +234,6 @@ h2 {
   line-height: 1.7;
 }
 
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.45rem;
-}
-
 @media (max-width: 700px) {
   .site-shell {
     padding: 0.85rem 0.85rem 1.5rem;
@@ -240,6 +246,11 @@ h2 {
   .nav-links {
     width: 100%;
     justify-content: flex-start;
+  }
+
+  .brand-logo {
+    width: 32px;
+    height: 32px;
   }
 
   .hero-brand-row {

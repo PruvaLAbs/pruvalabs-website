@@ -116,6 +116,10 @@ h1 {
   border-radius: 10px;
 }
 
+.hero-actions .cta {
+  margin-left: auto;
+}
+
 .cta,
 .link-pill {
   display: inline-flex;
@@ -269,6 +273,10 @@ h2 {
 
   .hero-logo {
     width: min(280px, 78vw);
+  }
+
+  .hero-actions .cta {
+    margin-left: 0;
   }
 
   .footer {

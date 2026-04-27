@@ -122,8 +122,9 @@ const privacyPolicySections = [
 function Header() {
   return (
     <nav className="top-nav" aria-label="Ana menü">
-      <a className="brand" href="/">
-        PruvaLAbs.
+      <a className="brand" href="/" aria-label="PruvaLAbs ana sayfa">
+        <img className="brand-logo" src="/pruvalabs-logo.png" alt="PruvaLAbs logosu" />
+        <span className="brand-text">PruvaLAbs.</span>
       </a>
       <div className="nav-links">
         <a href="/#hakkimizda">Hakkımızda</a>
@@ -143,16 +144,13 @@ function HomePage() {
 
         <div className="hero-content">
           <p className="eyebrow">Yazılım Laboratuvarı</p>
-          <div className="hero-brand-row">
-            <p className="hero-logo" aria-label="PruvaLAbs logosu">
-              PruvaLAbs.
-            </p>
+          <h1>Modern yazılım ve ürün mühendisliği</h1>
+          <p className="tagline">“Fikirleri rotaya, rotayı ürüne dönüştüren yazılım laboratuvarı.”</p>
+          <div className="hero-actions">
             <a className="cta" href="#iletisim">
               Bizimle İletişime Geçin
             </a>
           </div>
-          <h1>PruvaLAbs. modern yazılım ve ürün mühendisliği</h1>
-          <p className="tagline">“Fikirleri rotaya, rotayı ürüne dönüştüren yazılım laboratuvarı.”</p>
         </div>
       </header>
 
@@ -231,16 +229,6 @@ function Footer() {
       <div>
         <p className="footer-brand">PruvaLAbs.</p>
         <p className="footer-text">© 2025 PruvaLAbs. Tüm hakları saklıdır.</p>
-      </div>
-      <div className="footer-links">
-        <a href="mailto:pruvalabs@gmail.com">E-posta: pruvalabs@gmail.com</a>
-        <a href="https://instagram.com/pruvalabs" target="_blank" rel="noreferrer">
-          Instagram: @pruvalabs
-        </a>
-        <a href="https://x.com/pruvalabs" target="_blank" rel="noreferrer">
-          X: @pruvalabs
-        </a>
-        <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
       </div>
     </footer>
   );

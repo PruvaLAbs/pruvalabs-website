@@ -143,16 +143,16 @@ function HomePage() {
 
         <div className="hero-content">
           <p className="eyebrow">Yazılım Laboratuvarı</p>
-          <h1>PruvaLAbs. modern yazılım ve ürün mühendisliği</h1>
-          <p className="tagline">“Fikirleri rotaya, rotayı ürüne dönüştüren yazılım laboratuvarı.”</p>
-          <div className="hero-actions">
+          <div className="hero-brand-row">
+            <p className="hero-logo" aria-label="PruvaLAbs logosu">
+              PruvaLAbs.
+            </p>
             <a className="cta" href="#iletisim">
               Bizimle İletişime Geçin
             </a>
-            <a className="link-pill" href="https://instagram.com/pruvalabs" target="_blank" rel="noreferrer">
-              @pruvalabs
-            </a>
           </div>
+          <h1>PruvaLAbs. modern yazılım ve ürün mühendisliği</h1>
+          <p className="tagline">“Fikirleri rotaya, rotayı ürüne dönüştüren yazılım laboratuvarı.”</p>
         </div>
       </header>
 
@@ -171,6 +171,9 @@ function HomePage() {
             <a href="mailto:pruvalabs@gmail.com">pruvalabs@gmail.com</a>
             <a href="https://instagram.com/pruvalabs" target="_blank" rel="noreferrer">
               @pruvalabs
+            </a>
+            <a href="https://x.com/pruvalabs" target="_blank" rel="noreferrer">
+              X: @pruvalabs
             </a>
           </div>
         </section>
@@ -227,12 +230,15 @@ function Footer() {
     <footer className="footer">
       <div>
         <p className="footer-brand">PruvaLAbs.</p>
-        <p className="footer-text">Modern ürün geliştirme süreçlerinde strateji ve mühendisliği bir araya getirir.</p>
+        <p className="footer-text">© 2025 PruvaLAbs. Tüm hakları saklıdır.</p>
       </div>
       <div className="footer-links">
         <a href="mailto:pruvalabs@gmail.com">E-posta: pruvalabs@gmail.com</a>
         <a href="https://instagram.com/pruvalabs" target="_blank" rel="noreferrer">
           Instagram: @pruvalabs
+        </a>
+        <a href="https://x.com/pruvalabs" target="_blank" rel="noreferrer">
+          X: @pruvalabs
         </a>
         <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
       </div>

@@ -147,7 +147,7 @@ function HomePage() {
           <p className="tagline">“Fikirleri rotaya, rotayı ürüne dönüştüren yazılım laboratuvarı.”</p>
           <div className="hero-actions">
             <img src="/pruvalabs-logo.svg" alt="PruvaLAbs logosu" className="hero-logo" />
-            <a className="cta" href="#iletisim">
+            <a className="cta hero-cta" href="#iletisim">
               Bizimle İletişime Geçin
             </a>
           </div>

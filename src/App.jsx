@@ -144,14 +144,13 @@ function HomePage() {
 
         <div className="hero-content">
           <p className="eyebrow">Yazılım Laboratuvarı</p>
-          <div className="hero-brand-row">
-            <img className="hero-logo" src="/pruvalabs-logo.png" alt="PruvaLAbs logosu" />
+          <h1>Modern yazılım ve ürün mühendisliği</h1>
+          <p className="tagline">“Fikirleri rotaya, rotayı ürüne dönüştüren yazılım laboratuvarı.”</p>
+          <div className="hero-actions">
             <a className="cta" href="#iletisim">
               Bizimle İletişime Geçin
             </a>
           </div>
-          <h1>Modern yazılım ve ürün mühendisliği</h1>
-          <p className="tagline">“Fikirleri rotaya, rotayı ürüne dönüştüren yazılım laboratuvarı.”</p>
         </div>
       </header>
 

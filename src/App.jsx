@@ -31,6 +31,8 @@ const homeSections = [
   },
 ];
 
+const X_PROFILE_URL = 'https://x.com/pruvalabs';
+
 const privacyPolicySections = [
   {
     title: '1. Toplanan Bilgiler',
@@ -170,7 +172,7 @@ function HomePage() {
             <a href="https://instagram.com/pruvalabs" target="_blank" rel="noreferrer">
               @pruvalabs
             </a>
-            <a href="https://x.com/pruvalabs" target="_blank" rel="noreferrer">
+            <a href={X_PROFILE_URL} target="_blank" rel="noreferrer">
               X: @pruvalabs
             </a>
           </div>
@@ -235,7 +237,7 @@ function Footer() {
         <a href="https://instagram.com/pruvalabs" target="_blank" rel="noreferrer">
           Instagram: @pruvalabs
         </a>
-        <a href="https://x.com/pruvalabs" target="_blank" rel="noreferrer">X: @pruvalabs</a>
+        <a href={X_PROFILE_URL} target="_blank" rel="noreferrer">X: @pruvalabs</a>
         <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
       </div>
       <p className="copyright">© 2025 PruvaLAbs. Tüm hakları saklıdır.</p>

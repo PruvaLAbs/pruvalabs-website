@@ -280,7 +280,7 @@ function HomePage() {
           <SectionIntro
             eyebrow="Blog / İçerikler"
             title="AI, kodlama ve ürün geliştirme üzerine notlar."
-            text="Blog alanı; hem PruvaLabs’ın bilgi birikimini göstermek hem de arama görünürlüğünü güçlendirmek için kullanılacak."
+        
           />
           <div className="blog-list">
             {blogIdeas.map((idea) => <span key={idea}>{idea}</span>)}
@@ -339,7 +339,7 @@ function Footer() {
     <footer className="footer">
       <div>
         <p className="footer-brand">PruvaLAbs.</p>
-        <p className="footer-text">© 2026 PruvaLAbs. Tüm hakları saklıdır.</p>
+        <p className="footer-text">© 2025 PruvaLAbs. Tüm hakları saklıdır.</p>
       </div>
       <div className="footer-links">
         <a href="mailto:pruvalabs@gmail.com">pruvalabs@gmail.com</a>

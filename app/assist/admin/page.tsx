@@ -53,6 +53,12 @@ export default async function AdminPanelPage() {
             <a href="/assist/accounts" className="hover:text-slate-950">
               Markalar
             </a>
+            <a href="/assist/onboarding" className="hover:text-slate-950">
+              Kurulum
+            </a>
+            <a href="/assist/production" className="hover:text-slate-950">
+              Canlı Hazırlık
+            </a>
           </nav>
         </header>
 

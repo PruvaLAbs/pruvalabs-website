@@ -108,6 +108,18 @@ export default async function AssistPage() {
                 Marka Girişi
               </a>
               <a
+                href="/assist/production"
+                className="rounded-full border border-slate-300 bg-white px-6 py-3 text-center text-sm font-semibold text-slate-950 transition hover:border-sky-300 hover:text-sky-700"
+              >
+                Canlı Hazırlık
+              </a>
+              <a
+                href="/assist/onboarding"
+                className="rounded-full border border-slate-300 bg-white px-6 py-3 text-center text-sm font-semibold text-slate-950 transition hover:border-sky-300 hover:text-sky-700"
+              >
+                Şirket Kurulumu
+              </a>
+              <a
                 href="/assist/operations"
                 className="rounded-full border border-slate-300 bg-white px-6 py-3 text-center text-sm font-semibold text-slate-950 transition hover:border-sky-300 hover:text-sky-700"
               >

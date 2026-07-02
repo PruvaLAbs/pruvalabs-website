@@ -33,7 +33,7 @@ export default function ContactPage() {
         </h1>
 
         <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
-          Pruva Assist, AI sistemleri, ürün geliştirme ve iş birlikleri için
+          Pruva Asistan, AI sistemleri, ürün geliştirme ve iş birlikleri için
           bize ulaşabilirsiniz.
         </p>
 

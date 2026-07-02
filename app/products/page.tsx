@@ -1,7 +1,7 @@
 export default function ProductsPage() {
   const productAreas = [
     {
-      title: "Pruva Assist",
+      title: "Pruva Asistan",
       text: "Sosyal medya ve WhatsApp mesajlarını cevaplayan, uygun talepleri rezervasyona çeviren AI operasyon sistemi.",
       href: "/products/pruva-assist",
       cta: "Ürünü İncele",
@@ -33,7 +33,7 @@ export default function ProductsPage() {
 
           <nav className="flex flex-wrap gap-3 text-sm text-slate-600">
             <a href="/products/pruva-assist" className="hover:text-slate-950">
-              Pruva Assist
+              Pruva Asistan
             </a>
             <a href="/products/pruva-assist" className="font-semibold text-sky-700 hover:text-sky-700">
               AI Sisteme Geç
@@ -50,7 +50,7 @@ export default function ProductsPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
             PruvaLabs; mobil ürünler, iş sistemleri ve AI destekli operasyon
-            çözümleri geliştirir. Ana odak ürünümüz Pruva Assist’tir.
+            çözümleri geliştirir. Ana odak ürünümüz Pruva Asistan’tir.
           </p>
         </div>
 
@@ -104,7 +104,7 @@ export default function ProductsPage() {
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <h2 className="text-3xl font-semibold">
-                Pruva Assist canlı sistemine geçin.
+                Pruva Asistan canlı sistemine geçin.
               </h2>
               <p className="mt-3 max-w-2xl leading-7 text-slate-600">
                 Marka girişi, admin girişi, operasyon paneli ve pilot marka
@@ -116,7 +116,7 @@ export default function ProductsPage() {
               href="/products/pruva-assist"
               className="rounded-full bg-slate-900 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-slate-800"
             >
-              Pruva Assist’e Geç
+              Pruva Asistan’a Geç
             </a>
           </div>
         </section>

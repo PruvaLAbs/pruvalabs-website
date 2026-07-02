@@ -1,7 +1,7 @@
 export default function ProjectsPage() {
   const projects = [
     {
-      title: "Pruva Assist",
+      title: "Pruva Asistan",
       category: "AI operasyon sistemi",
       text: "Sosyal medya ve WhatsApp mesajlarını cevaplayan, uygun talepleri rezervasyona çeviren AI asistan sistemi.",
       href: "/products/pruva-assist",
@@ -57,7 +57,7 @@ export default function ProjectsPage() {
               Ürünler
             </a>
             <a href="/products/pruva-assist" className="font-semibold text-sky-700 hover:text-sky-700">
-              Pruva Assist
+              Pruva Asistan
             </a>
           </nav>
         </header>
@@ -100,7 +100,7 @@ export default function ProjectsPage() {
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <h2 className="text-3xl font-semibold">
-                Ana odak: Pruva Assist.
+                Ana odak: Pruva Asistan.
               </h2>
               <p className="mt-3 max-w-2xl leading-7 text-slate-700">
                 Sosyal medya mesajlarını cevaplayan, rezervasyonları yöneten ve
@@ -112,7 +112,7 @@ export default function ProjectsPage() {
               href="/products/pruva-assist"
               className="rounded-full bg-[#F6F8FB] px-6 py-3 text-center text-sm font-semibold text-slate-950 transition hover:bg-white"
             >
-              Pruva Assist’e Geç
+              Pruva Asistan’a Geç
             </a>
           </div>
         </section>

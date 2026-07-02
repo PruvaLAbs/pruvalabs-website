@@ -26,34 +26,34 @@ export default async function AssistAccountsPage() {
         ];
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-slate-950 text-white">
+    <main className="min-h-screen overflow-x-hidden bg-[#F6F8FB] text-slate-950">
       <section className="mx-auto w-full max-w-7xl px-6 py-8 sm:px-10">
-        <header className="flex flex-col gap-5 border-b border-white/10 pb-6 sm:flex-row sm:items-center sm:justify-between">
-          <a href="/assist" className="text-sm font-semibold text-cyan-200">
-            ← Pruva Assist
+        <header className="flex flex-col gap-5 border-b border-slate-200 pb-6 sm:flex-row sm:items-center sm:justify-between">
+          <a href="/assist" className="text-sm font-semibold text-sky-700">
+            ← Pruva Asistan
           </a>
 
-          <nav className="flex flex-wrap gap-3 text-sm text-slate-300">
-            <a href="/assist/brand" className="hover:text-white">
+          <nav className="flex flex-wrap gap-3 text-sm text-slate-600">
+            <a href="/assist/brand" className="hover:text-slate-950">
               Marka Paneli
             </a>
-            <a href="/assist/admin" className="hover:text-white">
+            <a href="/assist/admin" className="hover:text-slate-950">
               Admin
             </a>
-            <a href="/assist/operations" className="hover:text-white">
+            <a href="/assist/operations" className="hover:text-slate-950">
               Operasyon
             </a>
           </nav>
         </header>
 
         <div className="py-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-200">
+          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-sky-700">
             Markalar
           </p>
           <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">
             AI asistan bağlı işletmeler.
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
             Her marka kendi kanalları, AI asistanları, rezervasyon kuralları ve
             bildirim ayarlarıyla yönetilir.
           </p>
@@ -64,11 +64,11 @@ export default async function AssistAccountsPage() {
             <a
               key={account.slug}
               href={`/assist/accounts/${account.slug}`}
-              className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-cyan-200/50 hover:bg-white/[0.06]"
+              className="rounded-3xl border border-slate-200 bg-white p-6 transition hover:border-cyan-200/50 hover:bg-white/[0.06]"
             >
               <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr_0.9fr_auto] lg:items-center">
                 <div>
-                  <p className="text-sm text-slate-400">İşletme</p>
+                  <p className="text-sm text-slate-500">İşletme</p>
                   <h2 className="mt-2 text-2xl font-semibold">
                     {account.name}
                   </h2>
@@ -78,12 +78,12 @@ export default async function AssistAccountsPage() {
                 </div>
 
                 <div>
-                  <p className="text-sm text-slate-400">Kanallar</p>
+                  <p className="text-sm text-slate-500">Kanallar</p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {account.channels.map((channel) => (
                       <span
                         key={channel}
-                        className="rounded-full border border-cyan-200/30 bg-cyan-300/10 px-3 py-1 text-xs text-cyan-100"
+                        className="rounded-full border border-sky-200 bg-sky-100/10 px-3 py-1 text-xs text-sky-700"
                       >
                         {channel}
                       </span>
@@ -92,12 +92,12 @@ export default async function AssistAccountsPage() {
                 </div>
 
                 <div>
-                  <p className="text-sm text-slate-400">AI asistanlar</p>
+                  <p className="text-sm text-slate-500">AI asistanlar</p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {account.assistants.map((assistant) => (
                       <span
                         key={assistant}
-                        className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-300"
+                        className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600"
                       >
                         {assistant}
                       </span>
@@ -105,7 +105,7 @@ export default async function AssistAccountsPage() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-sm text-slate-300">
+                <div className="rounded-2xl border border-slate-200 bg-[#F6F8FB] px-4 py-3 text-sm text-slate-600">
                   WhatsApp: {account.notification}
                 </div>
               </div>
@@ -113,7 +113,7 @@ export default async function AssistAccountsPage() {
           ))}
         </section>
 
-        <section className="mt-8 rounded-3xl border border-cyan-200/30 bg-cyan-300 p-8 text-slate-950">
+        <section className="mt-8 rounded-3xl border border-sky-200 bg-sky-100 p-8 text-slate-950">
           <h2 className="text-3xl font-semibold">
             Her marka kendi bilgi havuzuyla çalışır.
           </h2>

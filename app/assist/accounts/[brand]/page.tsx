@@ -64,21 +64,21 @@ export default async function AssistAccountDetailPage({
   ];
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-slate-950 text-white">
+    <main className="min-h-screen overflow-x-hidden bg-[#F6F8FB] text-slate-950">
       <section className="mx-auto w-full max-w-7xl px-6 py-8 sm:px-10">
-        <header className="flex flex-col gap-5 border-b border-white/10 pb-6 sm:flex-row sm:items-center sm:justify-between">
-          <a href="/assist/accounts" className="text-sm font-semibold text-cyan-200">
+        <header className="flex flex-col gap-5 border-b border-slate-200 pb-6 sm:flex-row sm:items-center sm:justify-between">
+          <a href="/assist/accounts" className="text-sm font-semibold text-sky-700">
             ← Markalar
           </a>
 
-          <nav className="flex flex-wrap gap-3 text-sm text-slate-300">
-            <a href="/assist/brand" className="hover:text-white">
+          <nav className="flex flex-wrap gap-3 text-sm text-slate-600">
+            <a href="/assist/brand" className="hover:text-slate-950">
               Marka Paneli
             </a>
-            <a href="/assist/admin" className="hover:text-white">
+            <a href="/assist/admin" className="hover:text-slate-950">
               Admin
             </a>
-            <a href="/assist/operations" className="hover:text-white">
+            <a href="/assist/operations" className="hover:text-slate-950">
               Operasyon
             </a>
           </nav>
@@ -86,13 +86,13 @@ export default async function AssistAccountDetailPage({
 
         <div className="grid gap-6 py-10 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-200">
+            <p className="text-sm font-semibold uppercase tracking-[0.35em] text-sky-700">
               İşletme Profili
             </p>
             <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">
               {brandName}
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
               AI cevapları bu işletmeye özel bilgi havuzu, kanal ayarları ve
               rezervasyon kurallarına göre üretilir.
             </p>
@@ -107,31 +107,31 @@ export default async function AssistAccountDetailPage({
         </div>
 
         <section className="grid gap-4 md:grid-cols-4">
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
-            <p className="text-sm text-slate-400">Rezervasyon</p>
+          <div className="rounded-3xl border border-slate-200 bg-white p-6">
+            <p className="text-sm text-slate-500">Rezervasyon</p>
             <p className="mt-3 text-4xl font-semibold">{reservationList.length}</p>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
-            <p className="text-sm text-slate-400">Bildirim</p>
+          <div className="rounded-3xl border border-slate-200 bg-white p-6">
+            <p className="text-sm text-slate-500">Bildirim</p>
             <p className="mt-3 text-4xl font-semibold">{notificationList.length}</p>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
-            <p className="text-sm text-slate-400">Kanal</p>
+          <div className="rounded-3xl border border-slate-200 bg-white p-6">
+            <p className="text-sm text-slate-500">Kanal</p>
             <p className="mt-3 text-4xl font-semibold">{channels.length}</p>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
-            <p className="text-sm text-slate-400">AI asistan</p>
+          <div className="rounded-3xl border border-slate-200 bg-white p-6">
+            <p className="text-sm text-slate-500">AI asistan</p>
             <p className="mt-3 text-4xl font-semibold">{assistants.length}</p>
           </div>
         </section>
 
         <section className="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6">
             <h2 className="text-2xl font-semibold">İşletme bilgi havuzu</h2>
-            <p className="mt-2 text-sm text-slate-400">
+            <p className="mt-2 text-sm text-slate-500">
               AI bu bilgilerle cevap üretir.
             </p>
 
@@ -139,7 +139,7 @@ export default async function AssistAccountDetailPage({
               {knowledgeItems.map((item) => (
                 <div
                   key={item}
-                  className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 text-sm text-slate-300"
+                  className="rounded-2xl border border-slate-200 bg-[#F6F8FB] p-4 text-sm text-slate-600"
                 >
                   {item}
                 </div>
@@ -147,9 +147,9 @@ export default async function AssistAccountDetailPage({
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6">
             <h2 className="text-2xl font-semibold">Rezervasyon kuralları</h2>
-            <p className="mt-2 text-sm text-slate-400">
+            <p className="mt-2 text-sm text-slate-500">
               Uygun talepler bu akışa göre işlenir.
             </p>
 
@@ -157,12 +157,12 @@ export default async function AssistAccountDetailPage({
               {rules.map((rule, index) => (
                 <div
                   key={rule}
-                  className="flex gap-4 rounded-2xl border border-white/10 bg-slate-900/80 p-4"
+                  className="flex gap-4 rounded-2xl border border-slate-200 bg-[#F6F8FB] p-4"
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cyan-300 text-sm font-bold text-slate-950">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-100 text-sm font-bold text-slate-950">
                     {index + 1}
                   </span>
-                  <p className="text-sm leading-6 text-slate-300">{rule}</p>
+                  <p className="text-sm leading-6 text-slate-600">{rule}</p>
                 </div>
               ))}
             </div>
@@ -170,13 +170,13 @@ export default async function AssistAccountDetailPage({
         </section>
 
         <section className="mt-8 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6">
             <h2 className="text-2xl font-semibold">Aktif kanallar</h2>
             <div className="mt-6 space-y-3">
               {channels.map((channel) => (
                 <div
                   key={channel.name}
-                  className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-900/80 p-4"
+                  className="flex items-center justify-between rounded-2xl border border-slate-200 bg-[#F6F8FB] p-4"
                 >
                   <p className="font-semibold">{channel.name}</p>
                   <span className="rounded-full border border-emerald-300/20 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-200">
@@ -187,16 +187,16 @@ export default async function AssistAccountDetailPage({
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6">
             <h2 className="text-2xl font-semibold">Aktif AI asistanlar</h2>
             <div className="mt-6 space-y-3">
               {assistants.map((assistant) => (
                 <div
                   key={assistant.name}
-                  className="rounded-2xl border border-white/10 bg-slate-900/80 p-4"
+                  className="rounded-2xl border border-slate-200 bg-[#F6F8FB] p-4"
                 >
                   <p className="font-semibold">{assistant.name}</p>
-                  <p className="mt-2 text-sm leading-6 text-slate-400">
+                  <p className="mt-2 text-sm leading-6 text-slate-500">
                     {assistant.text}
                   </p>
                 </div>
@@ -206,16 +206,16 @@ export default async function AssistAccountDetailPage({
         </section>
 
         <section className="mt-8 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6">
             <h2 className="text-2xl font-semibold">Son rezervasyonlar</h2>
             <div className="mt-6 space-y-3">
               {reservationList.slice(0, 4).map((reservation) => (
                 <div
                   key={reservation.id}
-                  className="rounded-2xl border border-white/10 bg-slate-900/80 p-4"
+                  className="rounded-2xl border border-slate-200 bg-[#F6F8FB] p-4"
                 >
                   <p className="font-semibold">{reservation.customer_name}</p>
-                  <p className="mt-2 text-sm text-slate-400">
+                  <p className="mt-2 text-sm text-slate-500">
                     {reservation.party_size} kişi · {reservation.reservation_date} ·{" "}
                     {reservation.reservation_time}
                   </p>
@@ -223,34 +223,34 @@ export default async function AssistAccountDetailPage({
               ))}
 
               {reservationList.length === 0 ? (
-                <p className="text-sm text-slate-400">Henüz rezervasyon yok.</p>
+                <p className="text-sm text-slate-500">Henüz rezervasyon yok.</p>
               ) : null}
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6">
             <h2 className="text-2xl font-semibold">Son bildirimler</h2>
             <div className="mt-6 space-y-3">
               {notificationList.slice(0, 4).map((notification) => (
                 <div
                   key={notification.id}
-                  className="rounded-2xl border border-white/10 bg-slate-900/80 p-4"
+                  className="rounded-2xl border border-slate-200 bg-[#F6F8FB] p-4"
                 >
                   <p className="font-semibold">Bildirim #{notification.id}</p>
-                  <p className="mt-2 text-sm text-slate-400">
+                  <p className="mt-2 text-sm text-slate-500">
                     İşletmeye gönderildi
                   </p>
                 </div>
               ))}
 
               {notificationList.length === 0 ? (
-                <p className="text-sm text-slate-400">Henüz bildirim yok.</p>
+                <p className="text-sm text-slate-500">Henüz bildirim yok.</p>
               ) : null}
             </div>
           </div>
         </section>
 
-        <section className="mt-8 rounded-3xl border border-cyan-200/30 bg-cyan-300 p-8 text-slate-950">
+        <section className="mt-8 rounded-3xl border border-sky-200 bg-sky-100 p-8 text-slate-950">
           <h2 className="text-3xl font-semibold">
             AI cevapları işletmeye özel verilerle çalışır.
           </h2>

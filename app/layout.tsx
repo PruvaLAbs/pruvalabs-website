@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "PruvaLabs Pruva Assist",
+  title: "PruvaLabs Pruva Asistan",
   description: "AI-powered customer message automation platform for local businesses.",
 };
 

@@ -63,6 +63,9 @@ export default async function BrandPanelPage() {
             <a href="/assist/admin" className="hover:text-slate-950">
               Admin
             </a>
+            <a href="/assist/onboarding" className="hover:text-slate-950">
+              Kurulum
+            </a>
           </nav>
         </header>
 

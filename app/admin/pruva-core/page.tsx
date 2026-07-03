@@ -24,6 +24,8 @@ type TestMessageResponse = {
   success: boolean;
   brand_key?: string;
   brand_name?: string;
+  tone?: string;
+  voice?: string;
   intent?: string;
   reply?: string;
   needs_human_review?: boolean;
@@ -32,12 +34,23 @@ type TestMessageResponse = {
   error?: string;
 };
 
+type ToneUpdateResponse = {
+  success: boolean;
+  brand_key?: string;
+  brand_name?: string;
+  tone?: string;
+  voice?: string;
+  error?: string;
+};
+
 const API_BASE = "/api";
 
 export default function PruvaCoreAdminPage() {
   const [brandKey, setBrandKey] = useState("demo_cafe");
+  const [tone, setTone] = useState("samimi, kısa, net");
   const [message, setMessage] = useState("Çalışma saatleriniz nedir?");
   const [loadingKnowledge, setLoadingKnowledge] = useState(false);
+  const [loadingTone, setLoadingTone] = useState(false);
   const [loadingTest, setLoadingTest] = useState(false);
   const [knowledge, setKnowledge] = useState<KnowledgeResponse | null>(null);
   const [testResult, setTestResult] = useState<TestMessageResponse | null>(null);
@@ -65,6 +78,38 @@ export default function PruvaCoreAdminPage() {
       setError("Backend bağlantısı kurulamadı.");
     } finally {
       setLoadingKnowledge(false);
+    }
+  }
+
+  async function updateTone() {
+    setError("");
+    setLoadingTone(true);
+    setTestResult(null);
+
+    try {
+      const response = await fetch(`${API_BASE}/pruva-core/brand-tone/update`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          brand_key: brandKey,
+          tone,
+        }),
+      });
+
+      const data = (await response.json()) as ToneUpdateResponse;
+
+      if (!data.success) {
+        setError(data.error || "Tone güncellenemedi.");
+        return;
+      }
+
+      setTone(data.tone || tone);
+    } catch {
+      setError("Tone güncelleme bağlantısı kurulamadı.");
+    } finally {
+      setLoadingTone(false);
     }
   }
 
@@ -143,6 +188,34 @@ export default function PruvaCoreAdminPage() {
             </button>
           </div>
 
+          <div className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto]">
+            <div>
+              <label className="text-sm font-semibold text-slate-200">
+                Marka tonu
+              </label>
+
+              <select
+                value={tone}
+                onChange={(event) => setTone(event.target.value)}
+                className="mt-3 w-full rounded-xl border border-white/10 bg-slate-900 px-4 py-3 text-sm text-white outline-none focus:border-cyan-300"
+              >
+                <option value="samimi, kısa, net">Samimi</option>
+                <option value="kurumsal, profesyonel, net">Kurumsal</option>
+                <option value="resmi, efendim, net">Resmi</option>
+                <option value="organik, doğal, sade">Organik</option>
+                <option value="premium, lüks, resmi">Premium</option>
+              </select>
+            </div>
+
+            <button
+              onClick={updateTone}
+              disabled={loadingTone}
+              className="self-end rounded-xl border border-cyan-300/40 px-5 py-3 text-sm font-bold text-cyan-100 disabled:opacity-60"
+            >
+              {loadingTone ? "Güncelleniyor..." : "Tone Güncelle"}
+            </button>
+          </div>
+
           {error ? (
             <p className="mt-4 rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-100">
               {error}
@@ -218,6 +291,8 @@ export default function PruvaCoreAdminPage() {
                 </p>
 
                 <div className="mt-4 grid gap-2 text-xs text-slate-400">
+                  <p>Tone: {testResult.tone || "-"}</p>
+                  <p>Voice: {testResult.voice || "-"}</p>
                   <p>Intent: {testResult.intent || "-"}</p>
                   <p>Source: {testResult.source || "-"}</p>
                   <p>Confidence: {testResult.confidence ?? "-"}</p>

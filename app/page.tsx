@@ -2,218 +2,221 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
-const services = [
-  {
-    title: "Web Sitesi",
-    text: "Modern, hızlı ve profesyonel web siteleri.",
-  },
-  {
-    title: "Mobil App",
-    text: "App Store ve Google Play odaklı mobil ürünler.",
-  },
-  {
-    title: "AI Otomasyon",
-    text: "İşletmeler için AI destekli otomasyon akışları.",
-  },
-  {
-    title: "Dashboard",
-    text: "Operasyon, kayıt ve takip için sade yönetim panelleri.",
-  },
-  {
-    title: "Oyun & MVP",
-    text: "Fikirden çalışan ürüne hızlı prototip ve MVP geliştirme.",
-  },
-  {
-    title: "Ürün Tasarımı",
-    text: "Kullanıcı odaklı, temiz ve uygulanabilir ürün arayüzleri.",
-  },
-];
-
-const projects = [
-  {
-    title: "Pruva Asistan",
-    text: "İşletmeler için AI müşteri iletişimi ve rezervasyon sistemi.",
-    href: "/products/pruva-assist",
-  },
-  {
-    title: "Mobil Ürünler",
-    text: "Yayınlanabilir mobil uygulama ve oyun deneyimleri.",
-    href: "/projects",
-  },
-  {
-    title: "Yönetim Panelleri",
-    text: "İş süreçleri, kayıt, takip ve bildirim ekranları.",
-    href: "/projects",
-  },
-];
-
-const process = [
+const capabilities = [
   {
     number: "01",
-    title: "Planlama",
-    text: "İhtiyacı netleştirir, ürün yapısını çıkarırız.",
+    title: "Soruyu anlar",
+    text: "Niyeti, bağlamı ve konuşmanın yönünü birlikte değerlendirir.",
   },
   {
     number: "02",
-    title: "Tasarım",
-    text: "Sade, anlaşılır ve kullanılabilir arayüz hazırlarız.",
+    title: "Kanıtı bulur",
+    text: "Yanıtı yüklenen belgeler ve güvenilir bilgi katmanlarıyla temellendirir.",
   },
   {
     number: "03",
-    title: "Geliştirme",
-    text: "Next.js, backend, API ve panel yapısını kurarız.",
+    title: "Hafızayı korur",
+    text: "Konuşmanın sürekliliğini bozmadan ilgili geçmişi kullanır.",
   },
   {
     number: "04",
-    title: "Yayınlama",
-    text: "Canlıya alma, test ve iyileştirme sürecini yönetiriz.",
+    title: "Güvenle yanıtlar",
+    text: "Politika ve doğrulama katmanlarından geçen açık cevaplar üretir.",
   },
 ];
 
-const blogPosts = [
-  {
-    title: "AI asistan işletmelerde ne işe yarar?",
-    href: "/blog",
-  },
-  {
-    title: "Özel yazılım mı, hazır sistem mi?",
-    href: "/blog",
-  },
-  {
-    title: "Modern web sitesi nasıl olmalı?",
-    href: "/blog",
-  },
+const services = [
+  "Yapay zekâ ürünleri",
+  "Web ve mobil uygulamalar",
+  "Ürün tasarımı",
+  "Backend ve API sistemleri",
 ];
 
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#F6F8FB] text-slate-950">
+    <main className="min-h-screen overflow-x-hidden bg-[#F7F8FA] text-slate-950">
       <SiteHeader />
-      <img
-        src="/pruvalabs-logo.png"
-        alt=""
-        className="pointer-events-none fixed left-1/2 top-1/2 z-0 hidden w-[720px] -translate-x-1/2 -translate-y-1/2 opacity-[0.08] lg:block"
-      />
 
-
-      <section className="relative overflow-hidden bg-transparent">
-
-        <div className="absolute left-1/2 top-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-sky-100/20 blur-3xl" />
-        <div className="absolute right-0 top-32 h-72 w-72 rounded-full bg-slate-100/20 blur-3xl" />
-
-        <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-10 lg:py-28">
+      <section className="relative overflow-hidden border-b border-slate-200 bg-white">
+        <div className="absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-sky-100/60 blur-3xl" />
+        <div className="relative mx-auto grid w-full max-w-7xl gap-14 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:px-10 lg:py-28">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.35em] text-sky-700">
-              PruvaLabs.
-            </p>
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-emerald-500" />
+              PruvAI aktif geliştirmede
+            </div>
 
-            <h1 className="mt-6 max-w-4xl text-4xl font-bold tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
-              Teknoloji Laboratuvarı
+            <h1 className="mt-7 max-w-4xl text-5xl font-bold tracking-[-0.045em] text-slate-950 sm:text-6xl lg:text-7xl">
+              Yapay zekâ, sade bir deneyimle güçlü olmalı.
             </h1>
 
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
+              PruvAI; PruvaLabs tarafından geliştirilen, kendi çekirdeği,
+              hafızası, kanıt sistemi ve güvenlik katmanları bulunan yapay zekâ
+              platformudur.
+            </p>
+
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="mailto:pruvalabs@gmail.com?subject=Projemi%20Anlatmak%20İstiyorum"
-                className="rounded-full border border-slate-200 bg-[#F8FAFC]/30 px-7 py-4 text-center text-sm font-bold text-slate-950 transition hover:-translate-y-0.5 hover:bg-white hover:shadow-xl hover:shadow-slate-200/70"
-              >
-                Projeni Anlat
-              </a>
               <Link
-                href="/products/pruva-assist"
-                className="rounded-full border border-slate-200 bg-[#F8FAFC]/30 px-7 py-4 text-center text-sm font-bold text-slate-700 transition hover:-translate-y-0.5 hover:bg-white hover:text-slate-950 hover:shadow-xl hover:shadow-slate-200/70"
+                href="/pruvai"
+                className="rounded-full bg-slate-950 px-7 py-4 text-center text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-slate-800"
               >
-                Pruva Asistan
+                PruvAI&apos;ı keşfet
+              </Link>
+              <Link
+                href="/contact"
+                className="rounded-full border border-slate-300 bg-white px-7 py-4 text-center text-sm font-bold text-slate-800 transition hover:-translate-y-0.5 hover:border-slate-950"
+              >
+                Bizimle iletişime geç
               </Link>
             </div>
           </div>
 
-          <div className="min-w-0 rounded-[2rem] border border-slate-200 bg-[#F8FAFC]/35 p-4 transition hover:-translate-y-1 hover:bg-white hover:shadow-xl hover:shadow-slate-200/70 sm:p-5">
-            <div className="min-w-0 rounded-[1.5rem] border border-slate-200 bg-[#F8FAFC]/30 p-5 text-slate-950 transition hover:bg-white sm:p-7">
-              <p className="text-sm font-bold uppercase tracking-[0.25em] text-sky-700">
-                Öne Çıkan Ürün
-              </p>
-              <h2 className="mt-5 text-3xl font-bold sm:text-4xl">Pruva Asistan</h2>
-              <p className="mt-4 leading-7 text-slate-600">
-                AI destekli müşteri cevaplama ve rezervasyon sistemi.
-              </p>
-
-              <div className="mt-7 grid gap-3">
-                {["Müşteri yazar", "Asistan cevaplar", "İşletmeye bildirir"].map(
-                  (item) => (
-                    <div
-                      key={item}
-                      className="rounded-2xl border border-slate-200 bg-[#F8FAFC]/30 px-4 py-3 text-sm text-slate-700 transition hover:bg-white hover:shadow-sm hover:shadow-slate-200/60"
-                    >
-                      {item}
-                    </div>
-                  ),
-                )}
+          <div className="relative mx-auto w-full max-w-xl">
+            <div className="pruvai-orb absolute -inset-10 rounded-full bg-gradient-to-br from-cyan-100 via-blue-100 to-violet-100 blur-3xl" />
+            <div className="relative rounded-[2rem] border border-slate-200 bg-white p-5 shadow-2xl shadow-slate-300/50 sm:p-7">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-5">
+                <div className="flex items-center gap-3">
+                  <div className="grid h-10 w-10 place-items-center rounded-2xl bg-slate-950 text-sm font-bold text-white">
+                    P
+                  </div>
+                  <div>
+                    <p className="font-bold">PruvAI</p>
+                    <p className="text-xs text-slate-500">PruvaLabs AI</p>
+                  </div>
+                </div>
+                <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                  Yerel çekirdek
+                </span>
               </div>
 
-              <Link
-                href="/products/pruva-assist"
-                className="mt-7 inline-flex rounded-full bg-sky-100 px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-sky-200"
-              >
-                Ürünü İncele
-              </Link>
+              <div className="py-10 text-center">
+                <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-slate-950 text-xl font-bold text-white">
+                  P
+                </div>
+                <h2 className="mt-5 text-2xl font-bold tracking-tight">
+                  Nasıl yardımcı olabilirim?
+                </h2>
+                <p className="mt-2 text-sm text-slate-500">
+                  Sorunuzu yazın, birlikte çözelim.
+                </p>
+              </div>
+
+              <div className="grid gap-2 sm:grid-cols-2">
+                {[
+                  "Bir belgeyi özetle",
+                  "Fikrimi geliştirelim",
+                  "Bir plan hazırla",
+                  "Bilgiyi doğrula",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-4 flex items-center gap-3 rounded-2xl border border-slate-300 bg-white p-3 shadow-sm">
+                <span className="flex-1 text-sm text-slate-400">
+                  PruvAI&apos;a mesaj gönder
+                </span>
+                <span className="grid h-9 w-9 place-items-center rounded-xl bg-slate-950 text-white">
+                  ↑
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-7xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-10 lg:py-20">
-        <div>
-          <p className="text-sm font-bold uppercase tracking-[0.35em] text-sky-700">
-            Hakkımızda
+      <section className="mx-auto w-full max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div className="max-w-3xl">
+          <p className="text-sm font-bold uppercase tracking-[0.3em] text-sky-700">
+            PruvAI nasıl çalışır?
           </p>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
-            Fikirleri çalışan dijital ürünlere dönüştürüyoruz.
+          <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
+            Cevaptan önce bağlam, kanıt ve güven.
           </h2>
         </div>
 
-        <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-xl shadow-slate-200/60">
-          <p className="text-lg leading-8 text-slate-600">
-            PruvaLabs; AI sistemleri, web uygulamaları, mobil ürünler ve yönetim
-            panelleri geliştiren bir teknoloji laboratuvarıdır. Sade, kaliteli
-            ve profesyonel ürünler üretmeye odaklanır.
-          </p>
-          <Link
-            href="/about"
-            className="mt-7 inline-flex rounded-full border border-slate-300 px-5 py-3 text-sm font-bold text-slate-950 transition hover:border-slate-950"
-          >
-            Hakkımızda
-          </Link>
+        <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {capabilities.map((item) => (
+            <article
+              key={item.number}
+              className="rounded-[1.75rem] border border-slate-200 bg-white p-7 shadow-sm shadow-slate-200/50"
+            >
+              <p className="text-sm font-bold text-sky-700">{item.number}</p>
+              <h3 className="mt-8 text-2xl font-bold">{item.title}</h3>
+              <p className="mt-4 leading-7 text-slate-600">{item.text}</p>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-sky-700">
-                Hizmetler
-              </p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
-                Uzmanlık alanlarımız.
-              </h2>
-            </div>
-
-            <Link href="/services" className="text-sm font-bold text-slate-950">
-              Tüm hizmetler →
-            </Link>
+      <section className="bg-slate-950 py-20 text-white lg:py-28">
+        <div className="mx-auto grid w-full max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-10">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-sky-300">
+              Tek ürün, büyüyen yetenekler
+            </p>
+            <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
+              PruvAI bir sohbet kutusundan fazlası.
+            </h2>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
+              Belgeyle çalışma, kalıcı konuşmalar, kaynak gösterimi ve güvenli
+              yanıt üretimi aynı çekirdekte birleşir. Yeni araçlar bu temel
+              üzerine kontrollü biçimde eklenir.
+            </p>
           </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2">
+            {[
+              "Kalıcı konuşma hafızası",
+              "Belge temelli yanıtlar",
+              "Kaynak ve kanıt görünürlüğü",
+              "Politika ve güvenlik kontrolleri",
+              "Yerel model çalışma seçeneği",
+              "Genişleyebilir araç mimarisi",
+            ].map((item) => (
+              <div
+                key={item}
+                className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-sm font-semibold text-slate-200"
+              >
+                <span className="mr-3 text-sky-300">✓</span>
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-sky-700">
+              PruvaLabs
+            </p>
+            <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
+              Fikirleri çalışan dijital ürünlere dönüştürüyoruz.
+            </h2>
+            <p className="mt-6 max-w-xl leading-8 text-slate-600">
+              PruvAI&apos;ı geliştirirken edindiğimiz ürün, yazılım ve yapay zekâ
+              deneyimini farklı dijital ürünlerde de kullanıyoruz.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
             {services.map((service) => (
               <Link
-                key={service.title}
+                key={service}
                 href="/services"
-                className="rounded-[1.75rem] border border-slate-200 bg-[#F6F8FB] p-7 transition hover:-translate-y-1 hover:bg-white hover:shadow-xl hover:shadow-slate-200/70"
+                className="group rounded-[1.75rem] border border-slate-200 bg-white p-7 transition hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl hover:shadow-slate-200/50"
               >
-                <h3 className="text-2xl font-bold">{service.title}</h3>
-                <p className="mt-4 leading-7 text-slate-600">{service.text}</p>
-                <span className="mt-6 inline-flex text-sm font-bold text-sky-700">
-                  Daha Fazla →
+                <p className="text-xl font-bold">{service}</p>
+                <span className="mt-8 inline-flex text-sm font-bold text-sky-700">
+                  İncele <span className="ml-2 transition group-hover:translate-x-1">→</span>
                 </span>
               </Link>
             ))}
@@ -221,117 +224,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-        <div className="rounded-[2rem] bg-slate-950 p-8 text-white shadow-2xl shadow-slate-300/60 lg:p-12">
-          <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-sky-200">
-                Pruva Asistan
-              </p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
-                AI destekli müşteri iletişimi.
-              </h2>
-              <p className="mt-5 max-w-2xl leading-8 text-slate-300">
-                Pruva Asistan; işletmelerin müşteri mesajlarını karşılamasına,
-                rezervasyon bilgisi toplamasına ve işletmeye bildirim
-                göndermesine yardımcı olur.
-              </p>
-            </div>
-
-            <Link
-              href="/products/pruva-assist"
-              className="rounded-full bg-sky-100 px-7 py-4 text-center text-sm font-bold text-slate-950 transition hover:bg-sky-200"
-            >
-              Pruva Asistan’ı Gör
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-sky-700">
-                Projeler
-              </p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
-                Son çalışmalarımız.
-              </h2>
-            </div>
-
-            <Link href="/projects" className="text-sm font-bold text-slate-950">
-              Projeleri gör →
-            </Link>
-          </div>
-
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {projects.map((project) => (
-              <Link
-                key={project.title}
-                href={project.href}
-                className="rounded-[1.75rem] border border-slate-200 bg-[#F6F8FB] p-7 transition hover:-translate-y-1 hover:bg-white hover:shadow-xl hover:shadow-slate-200/70"
-              >
-                <h3 className="text-2xl font-bold">{project.title}</h3>
-                <p className="mt-4 leading-7 text-slate-600">{project.text}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-[0.35em] text-sky-700">
-                Blog&Rehber
-              </p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
-                Rehber içerikler.
-              </h2>
-            </div>
-
-            <Link href="/blog" className="text-sm font-bold text-slate-950">
-              Tüm yazılar →
-            </Link>
-          </div>
-
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {blogPosts.map((post) => (
-              <Link
-                key={post.title}
-                href={post.href}
-                className="rounded-[1.75rem] border border-slate-200 bg-[#F6F8FB] p-7 transition hover:-translate-y-1 hover:bg-white hover:shadow-xl hover:shadow-slate-200/70"
-              >
-                <h3 className="text-2xl font-bold">{post.title}</h3>
-                <span className="mt-6 inline-flex text-sm font-bold text-sky-700">
-                  Oku →
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-        <div className="rounded-[2rem] bg-cyan-100 p-8 lg:p-12">
+      <section className="px-5 pb-20 sm:px-8 lg:px-10">
+        <div className="mx-auto w-full max-w-7xl rounded-[2rem] bg-sky-100 p-8 sm:p-12">
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <h2 className="text-4xl font-bold tracking-tight">
-                Geleceğe birlikte adım atalım.
+                PruvAI&apos;ın gelişimini birlikte şekillendirelim.
               </h2>
               <p className="mt-4 max-w-2xl leading-8 text-slate-700">
-                Web, mobil, AI otomasyon veya dijital ürün fikriniz için
-                PruvaLabs ile iletişime geçin.
+                Kullanım senaryonuzu, ihtiyacınızı veya iş birliği fikrinizi
+                bize anlatın.
               </p>
             </div>
-
             <Link
               href="/contact"
               className="rounded-full bg-slate-950 px-7 py-4 text-center text-sm font-bold text-white transition hover:bg-slate-800"
             >
-              İletişim
+              İletişime geç
             </Link>
           </div>
         </div>

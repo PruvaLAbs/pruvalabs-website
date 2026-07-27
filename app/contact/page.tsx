@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function ContactPage() {
   const contactItems = [
     {
@@ -20,9 +22,9 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#F6F8FB] text-slate-950">
       <section className="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center px-6 py-16 sm:px-10">
-        <a href="/" className="text-sm font-semibold text-sky-700">
+        <Link href="/" className="text-sm font-semibold text-sky-700">
           ← Ana sayfa
-        </a>
+        </Link>
 
         <p className="mt-12 text-sm font-semibold uppercase tracking-[0.35em] text-sky-700">
           İletişim
@@ -33,7 +35,7 @@ export default function ContactPage() {
         </h1>
 
         <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
-          Pruva Asistan, AI sistemleri, ürün geliştirme ve iş birlikleri için
+          PruvAI, yapay zekâ sistemleri, ürün geliştirme ve iş birlikleri için
           bize ulaşabilirsiniz.
         </p>
 
@@ -51,9 +53,10 @@ export default function ContactPage() {
         </div>
       
         <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-6">
-          <h2 className="text-2xl font-semibold">Veri açıklaması</h2>
+          <h2 className="text-2xl font-semibold">Gizlilik ve veri</h2>
           <p className="mt-3 text-sm leading-6 text-slate-600">
-            Pruva Asistan müşteri mesajı ve rezervasyon bilgilerini hizmet için işler.
+            PruvAI genel kullanıma açılmadan önce veri işleme kapsamı ve kullanıcı
+            kontrolleri açık biçimde yayınlanacaktır.
           </p>
           <div className="mt-4">
 

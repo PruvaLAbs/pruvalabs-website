@@ -32,10 +32,10 @@ export default function AboutPage() {
         </h1>
 
         <p className="mt-8 max-w-4xl text-lg leading-8 text-slate-600">
-          PruvaLabs. web siteleri, kişisel/kurumsal bloglar, mobil uygulamalar,
-          AI destekli araçlar, yönetim panelleri ve ölçeklenebilir ürün
-          prototipleri geliştirir. Amacımız istediğiniz gibi görünen ama güçlü
-          çalışan dijital ürünler üretmek.
+          PruvaLabs; PruvAI başta olmak üzere yapay zekâ ürünleri, web
+          sistemleri, mobil uygulamalar ve ölçeklenebilir ürün altyapıları
+          geliştirir. Amacımız sade görünen, güçlü çalışan ve kalıcı değer
+          üreten dijital ürünler ortaya koymaktır.
         </p>
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">

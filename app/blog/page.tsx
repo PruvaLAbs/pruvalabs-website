@@ -1,9 +1,11 @@
+import Link from "next/link";
+
 const featuredPosts = [
   {
     tag: "AI Rehberi",
-    title: "AI asistan işletmelerde gerçekten ne işe yarar?",
+    title: "PruvAI neden yalnızca bir sohbet ekranı değildir?",
     summary:
-      "AI asistan, sadece otomatik cevap veren bir kutu değildir. Doğru kurulduğunda müşteri mesajlarını karşılar, sık sorulan soruları yanıtlar, rezervasyon gibi işleri düzene sokar ve işletmenin zamanını geri kazandırır.",
+      "Güvenilir bir yapay zekâ; modelin yanında hafıza, kanıt, güvenlik ve karar katmanlarına ihtiyaç duyar. PruvAI bu temeller üzerinde gelişiyor.",
     readTime: "5 dk",
   },
   {
@@ -17,16 +19,16 @@ const featuredPosts = [
     tag: "Otomasyon",
     title: "Küçük işletmeler AI otomasyona nereden başlamalı?",
     summary:
-      "İlk adım her işi otomatikleştirmek değildir. En çok tekrar eden mesajları, rezervasyon taleplerini, bilgi alma süreçlerini ve takip işlerini seçmek daha sağlıklı bir başlangıçtır.",
+      "İlk adım her işi otomatikleştirmek değildir. Bilginin kaynağını, karar sınırlarını ve insan kontrolü gereken noktaları seçmek daha sağlıklı bir başlangıçtır.",
     readTime: "6 dk",
   },
 ];
 
 const guidePosts = [
   {
-    title: "Rezervasyon alan işletmeler için AI asistan mantığı",
+    title: "Kanıtlı yapay zekâ yanıtı ne demektir?",
     text:
-      "Restoran, klinik, güzellik salonu veya randevulu çalışan bir işletme için en büyük sorun çoğu zaman mesaj trafiğidir. AI asistan bu trafiği düzenli hale getirebilir.",
+      "Bir cevabın yalnızca akıcı olması yetmez. Dayandığı belgenin, kaynağın ve güven düzeyinin görülebilir olması gerekir.",
   },
   {
     title: "Dashboard neden sadece grafik ekranı değildir?",
@@ -60,9 +62,9 @@ export default function BlogPage() {
     <main className="min-h-screen overflow-x-hidden bg-[#F6F8FB] text-slate-950">
       <section className="mx-auto w-full max-w-7xl px-6 py-8 sm:px-10">
         <header className="flex items-center justify-between border-b border-slate-200 pb-6">
-          <a href="/" className="text-sm font-semibold text-sky-700">
+          <Link href="/" className="text-sm font-semibold text-sky-700">
             ← Ana sayfa
-          </a>
+          </Link>
           <a href="/contact" className="text-sm font-semibold text-slate-600 hover:text-slate-950">
             İletişim
           </a>
@@ -145,7 +147,7 @@ export default function BlogPage() {
                 Bir konuyu merak mı ediyorsunuz?
               </h2>
               <p className="mt-4 max-w-2xl leading-8 text-slate-700">
-                AI asistan, web sitesi, mobil uygulama veya dijital ürün
+                PruvAI, web sitesi, mobil uygulama veya dijital ürün
                 geliştirme hakkında bize yazın. Rehber içeriklerimizi gerçek
                 ihtiyaçlara göre hazırlıyoruz.
               </p>

@@ -13,9 +13,9 @@ const services = [
       "iOS ve Android tarafında kullanılabilir, temiz ve yayınlanabilir mobil uygulamalar geliştiririz. Fikirden mağaza sürecine kadar ürünü adım adım hazırlarız.",
   },
   {
-    title: "AI Otomasyon",
+    title: "Yapay Zekâ Sistemleri",
     text:
-      "Tekrar eden işleri azaltan, müşteri mesajlarını düzenleyen ve operasyonu hızlandıran AI destekli akışlar kurarız. Amaç teknolojiyi karmaşıklaştırmak değil, işi kolaylaştırmaktır.",
+      "PruvAI çekirdeği ve ürün deneyimimizle belge, hafıza, kanıt ve araç kullanımı gerektiren yapay zekâ akışları geliştiririz.",
   },
   {
     title: "Dashboard",

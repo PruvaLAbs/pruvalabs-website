@@ -17,7 +17,10 @@ export function PruvAIChat() {
   const [draft, setDraft] = useState("");
   const [accessCode, setAccessCode] = useState("");
   const [accessState, setAccessState] = useState<
-    "checking" | "required" | "granted" | "not_required"
+    "checking" | "required" | "granted" | "not_required" | "unavailable"
+  >("checking");
+  const [serviceState, setServiceState] = useState<
+    "checking" | "ready" | "activation_required" | "unavailable"
   >("checking");
   const [messages, setMessages] = useState<Message[]>([]);
   const [busy, setBusy] = useState(false);
@@ -25,23 +28,41 @@ export function PruvAIChat() {
 
   useEffect(() => {
     let active = true;
-    void fetch("/api/pruvai/access", { cache: "no-store" })
-      .then(async (response) => {
-        const result = (await response.json()) as { status?: string };
+    void Promise.all([
+      fetch("/api/pruvai/status", { cache: "no-store" }).then(
+        async (response) =>
+          (await response.json()) as { status?: string },
+      ),
+      fetch("/api/pruvai/access", { cache: "no-store" }).then(
+        async (response) =>
+          (await response.json()) as { status?: string },
+      ),
+    ])
+      .then(([service, access]) => {
         if (!active) {
           return;
         }
-        if (result.status === "granted") {
-          setAccessState("granted");
-        } else if (result.status === "not_required") {
-          setAccessState("not_required");
+        if (service.status === "ready") {
+          setServiceState("ready");
+        } else if (service.status === "activation_required") {
+          setServiceState("activation_required");
         } else {
+          setServiceState("unavailable");
+        }
+        if (access.status === "granted") {
+          setAccessState("granted");
+        } else if (access.status === "not_required") {
+          setAccessState("not_required");
+        } else if (access.status === "required") {
           setAccessState("required");
+        } else {
+          setAccessState("unavailable");
         }
       })
       .catch(() => {
         if (active) {
-          setAccessState("required");
+          setServiceState("unavailable");
+          setAccessState("unavailable");
         }
       });
     return () => {
@@ -86,7 +107,19 @@ export function PruvAIChat() {
     if (!clean || busy) {
       return;
     }
-    if (accessState === "checking" || accessState === "required") {
+    if (serviceState !== "ready") {
+      setNotice(
+        serviceState === "activation_required"
+          ? "PruvAI canlı model bağlantısı güvenli aktivasyon bekliyor."
+          : "PruvAI servisine şu anda ulaşılamıyor.",
+      );
+      return;
+    }
+    if (
+      accessState === "checking" ||
+      accessState === "required" ||
+      accessState === "unavailable"
+    ) {
       setNotice("Devam etmek için sponsor erişim kodunu girin.");
       return;
     }
@@ -142,6 +175,22 @@ export function PruvAIChat() {
     void send(draft);
   }
 
+  const accessGranted =
+    accessState === "granted" || accessState === "not_required";
+  const canChat = serviceState === "ready" && accessGranted;
+  const statusLabel =
+    serviceState === "checking" || accessState === "checking"
+      ? "Bağlantı kontrol ediliyor"
+      : serviceState === "activation_required"
+        ? "Aktivasyon bekleniyor"
+        : serviceState === "unavailable"
+          ? "Servis kullanılamıyor"
+          : accessState === "required"
+            ? "Sponsor erişimi"
+            : accessState === "unavailable"
+              ? "Erişim doğrulanamıyor"
+              : "PruvAI hazır";
+
   return (
     <section
       id="pruvai-chat"
@@ -157,11 +206,7 @@ export function PruvAIChat() {
               </p>
             </div>
             <span className="rounded-full bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-700">
-              {accessState === "checking"
-                ? "Erişim kontrol ediliyor"
-                : accessState === "required"
-                  ? "Sponsor erişimi"
-                  : "Yerel PruvAI bağlantısı"}
+              {statusLabel}
             </span>
           </div>
         </div>
@@ -179,7 +224,7 @@ export function PruvAIChat() {
                 Sorunuzu doğal biçimde yazın. Yanıt PruvaLabs tarafından
                 çalıştırılan yerel PruvAI modelinden gelecek.
               </p>
-              {accessState === "required" ? (
+              {serviceState === "ready" && accessState === "required" ? (
                 <form
                   onSubmit={unlock}
                   className="mx-auto mt-8 max-w-md rounded-3xl border border-slate-200 bg-white p-5 text-left shadow-sm"
@@ -213,19 +258,27 @@ export function PruvAIChat() {
                     imzalı bir oturum olarak tutulur.
                   </p>
                 </form>
-              ) : (
+              ) : canChat ? (
                 <div className="mt-8 grid gap-3 sm:grid-cols-3">
                   {suggestions.map((suggestion) => (
                     <button
                       key={suggestion}
                       type="button"
-                      disabled={accessState === "checking"}
+                      disabled={!canChat}
                       onClick={() => void send(suggestion)}
                       className="rounded-2xl border border-slate-200 bg-white p-4 text-left text-sm font-semibold leading-6 text-slate-700 transition hover:border-sky-300 hover:bg-sky-50 disabled:cursor-wait disabled:opacity-60"
                     >
                       {suggestion}
                     </button>
                   ))}
+                </div>
+              ) : (
+                <div className="mx-auto mt-8 max-w-xl rounded-3xl border border-slate-200 bg-white px-6 py-5 text-sm leading-6 text-slate-600 shadow-sm">
+                  {serviceState === "activation_required"
+                    ? "PruvAI arayüzü hazır. Yerel cevap motoru güvenli biçimde bağlandığında mesaj alanı otomatik olarak etkinleşecek."
+                    : serviceState === "unavailable"
+                      ? "PruvAI cevap motoruna şu anda ulaşılamıyor. Arayüz yanlış bir hazır durumu göstermeden güvenli biçimde bekliyor."
+                      : "PruvAI bağlantısı ve erişim durumu kontrol ediliyor."}
                 </div>
               )}
             </div>
@@ -272,12 +325,13 @@ export function PruvAIChat() {
               }}
               maxLength={12000}
               rows={1}
+              disabled={!canChat || busy}
               placeholder="PruvAI'ya mesaj gönder"
-              className="max-h-40 min-h-11 flex-1 resize-none bg-transparent py-2.5 text-slate-950 outline-none placeholder:text-slate-400"
+              className="max-h-40 min-h-11 flex-1 resize-none bg-transparent py-2.5 text-slate-950 outline-none placeholder:text-slate-400 disabled:cursor-not-allowed disabled:text-slate-400"
             />
             <button
               type="submit"
-              disabled={busy || !draft.trim()}
+              disabled={!canChat || busy || !draft.trim()}
               className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-slate-950 text-lg font-bold text-white transition hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-slate-300"
               aria-label="Mesajı gönder"
             >

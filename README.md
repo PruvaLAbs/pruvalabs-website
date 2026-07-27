@@ -20,6 +20,9 @@ npm run build
 PruvAI sohbet arayüzü `/pruvai` içinde çalışır. Tarayıcı hiçbir backend
 anahtarını görmez; aynı-origin `/api/pruvai/chat` Route Handler güvenilir
 PruvAI public gateway'e sunucu tarafından bağlanır.
+`/api/pruvai/status` yalnızca güvenli `ready`, `activation_required` veya
+`unavailable` durumunu yayınlar; backend adresini, anahtarı veya iç hata
+ayrıntısını tarayıcıya göndermez.
 
 ## PruvAI üretim değişkenleri
 
@@ -30,7 +33,7 @@ PruvAI public gateway'e sunucu tarafından bağlanır.
 Bu değişkenler olmadan sohbet geçidi fail-closed biçimde `503` döndürür ve
 arayüz aktivasyonun tamamlanmadığını açıkça gösterir.
 
-## V177 ücretsiz geliştirme ve sponsor modu
+## V178 ücretsiz geliştirme ve sponsor modu
 
 PruvAI backend deposundaki başlatıcı günlük yerel geliştirmeyi ve süreli
 sponsor demosunu birlikte yönetir:
@@ -38,12 +41,15 @@ sponsor demosunu birlikte yönetir:
 ```bash
 python scripts/start_pruvai_demo.py local
 python scripts/start_pruvai_demo.py sponsor
+python scripts/start_pruvai_demo.py local --check-only
 ```
 
 Sponsor modunda yalnızca bu Next.js arayüzü geçici HTTPS tüneline açılır.
 Backend, Ollama ve model `127.0.0.1` üzerinde kalır. Sponsor kodu sunucuda
 doğrulanır; tarayıcıya yalnızca süreli, imzalı ve HttpOnly erişim oturumu
 verilir. Tünel kapandığında dış erişim sona erer.
+Arayüz, erişim kilidi açık olsa bile backend sağlık sözleşmesi doğrulanmadan
+PruvAI bağlantısını hazır göstermez ve mesaj gönderimini etkinleştirmez.
 
 Ek sunucu değişkenleri:
 

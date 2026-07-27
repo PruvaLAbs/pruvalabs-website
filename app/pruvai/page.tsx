@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { PruvAIChat } from "@/components/pruvai-chat";
 
 export const metadata: Metadata = {
   title: "PruvAI",
@@ -68,10 +69,10 @@ export default function PruvAIPage() {
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <a
-              href="mailto:pruvalabs@gmail.com?subject=PruvAI%20Erken%20Erişim"
+              href="#pruvai-chat"
               className="rounded-full bg-slate-950 px-7 py-4 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-slate-800"
             >
-              Erken erişim için yaz
+              PruvAI&apos;ya sor
             </a>
             <Link
               href="/projects"
@@ -81,10 +82,12 @@ export default function PruvAIPage() {
             </Link>
           </div>
           <p className="mt-5 text-sm text-slate-500">
-            PruvAI henüz genel kullanıma açılmamıştır.
+            Kontrollü canlı erişim için güvenli model bağlantısı hazırlanıyor.
           </p>
         </div>
       </section>
+
+      <PruvAIChat />
 
       <section className="border-y border-slate-200 bg-white">
         <div className="mx-auto grid w-full max-w-7xl gap-px bg-slate-200 sm:grid-cols-3">

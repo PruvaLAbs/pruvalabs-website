@@ -17,5 +17,15 @@ Site varsayılan olarak `http://localhost:3000` adresinde açılır.
 npm run build
 ```
 
-PruvAI ürün uygulaması bu depo içinde çalıştırılmaz. Bu site, ürünün genel
-tanıtımını ve erken erişim iletişimini sunar.
+PruvAI sohbet arayüzü `/pruvai` içinde çalışır. Tarayıcı hiçbir backend
+anahtarını görmez; aynı-origin `/api/pruvai/chat` Route Handler güvenilir
+PruvAI public gateway'e sunucu tarafından bağlanır.
+
+## PruvAI üretim değişkenleri
+
+- `PRUVAI_BACKEND_URL`: HTTPS PruvAI public gateway kök adresi
+- `PRUVAI_GATEWAY_SECRET`: backend ile paylaşılan en az 32 bayt servis anahtarı
+- `PRUVAI_SESSION_SECRET`: konuşma kimliğini imzalayan en az 32 bayt ayrı anahtar
+
+Bu değişkenler olmadan sohbet geçidi fail-closed biçimde `503` döndürür ve
+arayüz aktivasyonun tamamlanmadığını açıkça gösterir.

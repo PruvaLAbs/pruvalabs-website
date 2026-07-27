@@ -6,12 +6,17 @@ import {
   sealConversationId,
   validSessionId,
 } from "@/lib/pruvai-session";
+import {
+  sponsorDemoConfig,
+  validSponsorAccessToken,
+} from "@/lib/pruvai-demo-access";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const SESSION_COOKIE = "pruvai_session";
 const CONVERSATION_COOKIE = "pruvai_conversation";
+const SPONSOR_ACCESS_COOKIE = "pruvai_sponsor_access";
 const MAX_REQUEST_BYTES = 16_384;
 
 type BackendAnswer = {
@@ -25,6 +30,7 @@ type BackendAnswer = {
 function configuration(): {
   backendUrl: string;
   gatewaySecret: string;
+  gatewayOrigin: string | null;
 } {
   const backendUrl = process.env.PRUVAI_BACKEND_URL?.trim().replace(/\/$/, "");
   const gatewaySecret = process.env.PRUVAI_GATEWAY_SECRET?.trim() ?? "";
@@ -34,8 +40,11 @@ function configuration(): {
   }
 
   const parsed = new URL(backendUrl);
+  const allowLoopback =
+    process.env.PRUVAI_ALLOW_LOOPBACK_BACKEND?.trim().toLowerCase() ===
+    "true";
   const localDevelopment =
-    process.env.NODE_ENV !== "production" &&
+    (process.env.NODE_ENV !== "production" || allowLoopback) &&
     parsed.protocol === "http:" &&
     ["127.0.0.1", "localhost"].includes(parsed.hostname);
   if (
@@ -49,7 +58,26 @@ function configuration(): {
     throw new Error("pruvai_backend_url_invalid");
   }
 
-  return { backendUrl, gatewaySecret };
+  const configuredOrigin =
+    process.env.PRUVAI_GATEWAY_ORIGIN?.trim().replace(/\/$/, "") ?? "";
+  let gatewayOrigin: string | null = null;
+  if (configuredOrigin) {
+    const parsedOrigin = new URL(configuredOrigin);
+    if (
+      parsedOrigin.protocol !== "https:" ||
+      !parsedOrigin.hostname ||
+      parsedOrigin.username ||
+      parsedOrigin.password ||
+      parsedOrigin.search ||
+      parsedOrigin.hash ||
+      !["", "/"].includes(parsedOrigin.pathname)
+    ) {
+      throw new Error("pruvai_gateway_origin_invalid");
+    }
+    gatewayOrigin = configuredOrigin;
+  }
+
+  return { backendUrl, gatewaySecret, gatewayOrigin };
 }
 
 function noStoreJson(
@@ -133,6 +161,31 @@ export async function POST(request: Request): Promise<NextResponse> {
   }
 
   const cookieStore = await cookies();
+  try {
+    const demo = sponsorDemoConfig();
+    if (
+      demo.enabled &&
+      !validSponsorAccessToken(
+        cookieStore.get(SPONSOR_ACCESS_COOKIE)?.value,
+      )
+    ) {
+      return noStoreJson(
+        {
+          status: "unauthorized",
+          error_code: "sponsor_access_required",
+        },
+        401,
+      );
+    }
+  } catch {
+    return noStoreJson(
+      {
+        status: "unavailable",
+        error_code: "sponsor_demo_not_configured",
+      },
+      503,
+    );
+  }
   const existingSession = cookieStore.get(SESSION_COOKIE)?.value;
   const sessionId = validSessionId(existingSession)
     ? existingSession
@@ -154,7 +207,7 @@ export async function POST(request: Request): Promise<NextResponse> {
         headers: {
           "Content-Type": "application/json",
           "X-PruvAI-Gateway-Key": config.gatewaySecret,
-          "X-PruvAI-Origin": origin,
+          "X-PruvAI-Origin": config.gatewayOrigin ?? origin,
           "X-PruvAI-Session": sessionId,
         },
         body: JSON.stringify({
@@ -215,7 +268,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     },
     200,
   );
-  const secure = process.env.NODE_ENV === "production";
+  const secure = new URL(origin).protocol === "https:";
   outgoing.cookies.set(SESSION_COOKIE, sessionId, {
     httpOnly: true,
     secure,

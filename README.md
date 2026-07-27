@@ -29,3 +29,29 @@ PruvAI public gateway'e sunucu tarafından bağlanır.
 
 Bu değişkenler olmadan sohbet geçidi fail-closed biçimde `503` döndürür ve
 arayüz aktivasyonun tamamlanmadığını açıkça gösterir.
+
+## V177 ücretsiz geliştirme ve sponsor modu
+
+PruvAI backend deposundaki başlatıcı günlük yerel geliştirmeyi ve süreli
+sponsor demosunu birlikte yönetir:
+
+```bash
+python scripts/start_pruvai_demo.py local
+python scripts/start_pruvai_demo.py sponsor
+```
+
+Sponsor modunda yalnızca bu Next.js arayüzü geçici HTTPS tüneline açılır.
+Backend, Ollama ve model `127.0.0.1` üzerinde kalır. Sponsor kodu sunucuda
+doğrulanır; tarayıcıya yalnızca süreli, imzalı ve HttpOnly erişim oturumu
+verilir. Tünel kapandığında dış erişim sona erer.
+
+Ek sunucu değişkenleri:
+
+- `PRUVAI_GATEWAY_ORIGIN`: backend'e sunucu tarafından bildirilen kesin HTTPS
+  origin
+- `PRUVAI_ALLOW_LOOPBACK_BACKEND`: yalnızca birleşik yerel başlatıcı için
+  loopback backend izni
+- `PRUVAI_SPONSOR_DEMO_MODE`: sponsor kodu kapısını etkinleştiren kesin
+  `true`/`false` bayrağı
+- `PRUVAI_SPONSOR_CODE`: en az 12 baytlık görüşme erişim kodu
+- `PRUVAI_SPONSOR_ACCESS_MINUTES`: 5–120 dakika arası oturum süresi

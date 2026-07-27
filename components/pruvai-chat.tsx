@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 type Message = {
   role: "user" | "assistant";
@@ -15,13 +15,79 @@ const suggestions = [
 
 export function PruvAIChat() {
   const [draft, setDraft] = useState("");
+  const [accessCode, setAccessCode] = useState("");
+  const [accessState, setAccessState] = useState<
+    "checking" | "required" | "granted" | "not_required"
+  >("checking");
   const [messages, setMessages] = useState<Message[]>([]);
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
 
+  useEffect(() => {
+    let active = true;
+    void fetch("/api/pruvai/access", { cache: "no-store" })
+      .then(async (response) => {
+        const result = (await response.json()) as { status?: string };
+        if (!active) {
+          return;
+        }
+        if (result.status === "granted") {
+          setAccessState("granted");
+        } else if (result.status === "not_required") {
+          setAccessState("not_required");
+        } else {
+          setAccessState("required");
+        }
+      })
+      .catch(() => {
+        if (active) {
+          setAccessState("required");
+        }
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  async function unlock(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const code = accessCode.trim();
+    if (!code || busy) {
+      return;
+    }
+    setBusy(true);
+    setNotice(null);
+    try {
+      const response = await fetch("/api/pruvai/access", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code }),
+      });
+      const result = (await response.json()) as { status?: string };
+      if (response.ok && result.status === "granted") {
+        setAccessCode("");
+        setAccessState("granted");
+      } else {
+        setNotice(
+          response.status === 429
+            ? "Çok fazla erişim denemesi yapıldı. Birkaç dakika sonra tekrar deneyin."
+            : "Sponsor erişim kodu geçerli değil.",
+        );
+      }
+    } catch {
+      setNotice("Sponsor erişimi şu anda doğrulanamıyor.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function send(message: string) {
     const clean = message.trim();
     if (!clean || busy) {
+      return;
+    }
+    if (accessState === "checking" || accessState === "required") {
+      setNotice("Devam etmek için sponsor erişim kodunu girin.");
       return;
     }
 
@@ -45,8 +111,14 @@ export function PruvAIChat() {
         error_code?: string;
       };
       if (!response.ok || result.status !== "answered" || !result.answer) {
+        if (response.status === 401) {
+          setAccessState("required");
+          setMessages([]);
+        }
         setNotice(
-          response.status === 429
+          response.status === 401
+            ? "Sponsor oturumunun süresi doldu. Erişim kodunu yeniden girin."
+            : response.status === 429
             ? "Kısa süre içinde çok fazla mesaj gönderildi. Bir dakika sonra tekrar deneyin."
             : "PruvAI canlı model bağlantısı henüz etkin değil. Güvenli aktivasyon tamamlandığında burada yanıt verecek.",
         );
@@ -85,7 +157,11 @@ export function PruvAIChat() {
               </p>
             </div>
             <span className="rounded-full bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-700">
-              Aktivasyon hazırlanıyor
+              {accessState === "checking"
+                ? "Erişim kontrol ediliyor"
+                : accessState === "required"
+                  ? "Sponsor erişimi"
+                  : "Yerel PruvAI bağlantısı"}
             </span>
           </div>
         </div>
@@ -100,21 +176,58 @@ export function PruvAIChat() {
                 Nasıl yardımcı olabilirim?
               </h2>
               <p className="mt-4 leading-7 text-slate-600">
-                Sorunuzu doğal biçimde yazın. Canlı model bağlantısı etkin
-                olduğunda yanıt aynı ekranda görünecek.
+                Sorunuzu doğal biçimde yazın. Yanıt PruvaLabs tarafından
+                çalıştırılan yerel PruvAI modelinden gelecek.
               </p>
-              <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                {suggestions.map((suggestion) => (
-                  <button
-                    key={suggestion}
-                    type="button"
-                    onClick={() => void send(suggestion)}
-                    className="rounded-2xl border border-slate-200 bg-white p-4 text-left text-sm font-semibold leading-6 text-slate-700 transition hover:border-sky-300 hover:bg-sky-50"
+              {accessState === "required" ? (
+                <form
+                  onSubmit={unlock}
+                  className="mx-auto mt-8 max-w-md rounded-3xl border border-slate-200 bg-white p-5 text-left shadow-sm"
+                >
+                  <label
+                    htmlFor="pruvai-access-code"
+                    className="text-sm font-bold text-slate-800"
                   >
-                    {suggestion}
-                  </button>
-                ))}
-              </div>
+                    Sponsor erişim kodu
+                  </label>
+                  <div className="mt-3 flex gap-2">
+                    <input
+                      id="pruvai-access-code"
+                      value={accessCode}
+                      onChange={(event) => setAccessCode(event.target.value)}
+                      autoComplete="one-time-code"
+                      maxLength={128}
+                      className="min-w-0 flex-1 rounded-2xl border border-slate-300 px-4 py-3 text-slate-950 outline-none focus:border-sky-500 focus:ring-4 focus:ring-sky-100"
+                      placeholder="Erişim kodunu girin"
+                    />
+                    <button
+                      type="submit"
+                      disabled={busy || !accessCode.trim()}
+                      className="rounded-2xl bg-slate-950 px-5 py-3 text-sm font-bold text-white disabled:bg-slate-300"
+                    >
+                      Aç
+                    </button>
+                  </div>
+                  <p className="mt-3 text-xs leading-5 text-slate-500">
+                    Erişim görüşme süresiyle sınırlıdır ve tarayıcıda güvenli,
+                    imzalı bir oturum olarak tutulur.
+                  </p>
+                </form>
+              ) : (
+                <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                  {suggestions.map((suggestion) => (
+                    <button
+                      key={suggestion}
+                      type="button"
+                      disabled={accessState === "checking"}
+                      onClick={() => void send(suggestion)}
+                      className="rounded-2xl border border-slate-200 bg-white p-4 text-left text-sm font-semibold leading-6 text-slate-700 transition hover:border-sky-300 hover:bg-sky-50 disabled:cursor-wait disabled:opacity-60"
+                    >
+                      {suggestion}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           ) : (
             messages.map((message, index) => (

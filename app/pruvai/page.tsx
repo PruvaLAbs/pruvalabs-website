@@ -82,7 +82,7 @@ export default function PruvAIPage() {
             </Link>
           </div>
           <p className="mt-5 text-sm text-slate-500">
-            Kontrollü canlı erişim için güvenli model bağlantısı hazırlanıyor.
+            Yerel geliştirme ve kontrollü sponsor demosu için güvenli erişim.
           </p>
         </div>
       </section>

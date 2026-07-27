@@ -20,6 +20,12 @@ npm run build
 PruvAI sohbet arayüzü `/pruvai` içinde çalışır. Tarayıcı hiçbir backend
 anahtarını görmez; aynı-origin `/api/pruvai/chat` Route Handler güvenilir
 PruvAI public gateway'e sunucu tarafından bağlanır.
+
+V183 ile yanıtlar public gateway'den sunucu taraflı SSE aracısı üzerinden
+parça parça iletilir. Gateway anahtarı tarayıcıya verilmez; imzalı konuşma
+kimliği ilk güvenilir akış olayından sonra HttpOnly cookie olarak saklanır.
+Arayüz yalnızca backend sağlık yanıtı güvenli streaming desteğini açıkça
+bildirirse mesaj göndermeyi etkinleştirir.
 `/api/pruvai/status` yalnızca güvenli `ready`, `activation_required` veya
 `unavailable` durumunu yayınlar; backend adresini, anahtarı veya iç hata
 ayrıntısını tarayıcıya göndermez.

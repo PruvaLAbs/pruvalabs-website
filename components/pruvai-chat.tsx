@@ -7,6 +7,15 @@ type Message = {
   content: string;
 };
 
+type StreamEvent = {
+  type?: unknown;
+  delta?: unknown;
+  answer?: unknown;
+  status?: unknown;
+  external_ai_api_used?: unknown;
+  error_code?: unknown;
+};
+
 const suggestions = [
   "Bir iş fikrini uygulanabilir adımlara ayır",
   "Bu hafta için sade bir çalışma planı hazırla",
@@ -132,18 +141,15 @@ export function PruvAIChat() {
       { role: "user", content: clean },
     ]);
 
+    let assistantStarted = false;
     try {
       const response = await fetch("/api/pruvai/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: clean }),
       });
-      const result = (await response.json()) as {
-        status?: string;
-        answer?: string;
-        error_code?: string;
-      };
-      if (!response.ok || result.status !== "answered" || !result.answer) {
+      if (!response.ok) {
+        await response.json().catch(() => ({}));
         if (response.status === 401) {
           setAccessState("required");
           setMessages([]);
@@ -157,11 +163,131 @@ export function PruvAIChat() {
         );
         return;
       }
+      if (
+        !response.body ||
+        !response.headers
+          .get("content-type")
+          ?.toLowerCase()
+          .startsWith("text/event-stream")
+      ) {
+        throw new Error("pruvai_stream_invalid");
+      }
+
+      assistantStarted = true;
       setMessages((current) => [
         ...current,
-        { role: "assistant", content: result.answer! },
+        { role: "assistant", content: "" },
       ]);
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      let answer = "";
+      let created = false;
+      let completed = false;
+      try {
+        while (true) {
+          const next = await reader.read();
+          buffer += decoder.decode(next.value, { stream: !next.done });
+          let boundary = buffer.indexOf("\n\n");
+          while (boundary >= 0) {
+            const frame = buffer.slice(0, boundary);
+            buffer = buffer.slice(boundary + 2);
+            const dataLine = frame
+              .split("\n")
+              .find((line) => line.startsWith("data: "));
+            if (!dataLine) {
+              throw new Error("pruvai_stream_invalid");
+            }
+            const event = JSON.parse(dataLine.slice(6)) as StreamEvent;
+            if (event.type === "response.created") {
+              if (
+                created ||
+                completed ||
+                answer ||
+                event.external_ai_api_used !== false
+              ) {
+                throw new Error("pruvai_stream_invalid");
+              }
+              created = true;
+            } else if (event.type === "response.output_text.delta") {
+              if (
+                !created ||
+                completed ||
+                typeof event.delta !== "string" ||
+                !event.delta
+              ) {
+                throw new Error("pruvai_stream_invalid");
+              }
+              answer += event.delta;
+              if (answer.length > 1_000_000) {
+                throw new Error("pruvai_stream_too_large");
+              }
+              setMessages((current) => {
+                const updated = [...current];
+                const last = updated.at(-1);
+                if (!last || last.role !== "assistant") {
+                  return current;
+                }
+                updated[updated.length - 1] = {
+                  role: "assistant",
+                  content: answer,
+                };
+                return updated;
+              });
+            } else if (event.type === "response.completed") {
+              if (
+                !created ||
+                completed ||
+                event.status !== "answered" ||
+                typeof event.answer !== "string" ||
+                event.answer !== answer.trim() ||
+                event.external_ai_api_used !== false
+              ) {
+                throw new Error("pruvai_stream_invalid");
+              }
+              completed = true;
+              setMessages((current) => {
+                const updated = [...current];
+                const last = updated.at(-1);
+                if (!last || last.role !== "assistant") {
+                  return current;
+                }
+                updated[updated.length - 1] = {
+                  role: "assistant",
+                  content: event.answer as string,
+                };
+                return updated;
+              });
+            } else if (event.type === "error") {
+              throw new Error(
+                typeof event.error_code === "string"
+                  ? event.error_code
+                  : "pruvai_runtime_unavailable",
+              );
+            } else {
+              throw new Error("pruvai_stream_invalid");
+            }
+            boundary = buffer.indexOf("\n\n");
+          }
+          if (next.done) {
+            break;
+          }
+        }
+      } finally {
+        await reader.cancel().catch(() => undefined);
+      }
+      if (!created || !completed || !answer.trim()) {
+        throw new Error("pruvai_stream_incomplete");
+      }
     } catch {
+      if (assistantStarted) {
+        setMessages((current) => {
+          const last = current.at(-1);
+          return last?.role === "assistant"
+            ? current.slice(0, -1)
+            : current;
+        });
+      }
       setNotice(
         "PruvAI servisine şu anda ulaşılamıyor. Lütfen daha sonra tekrar deneyin.",
       );

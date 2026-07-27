@@ -10,6 +10,8 @@ type BackendHealth = {
   enabled?: unknown;
   external_ai_api_used?: unknown;
   direct_product_api_exposed?: unknown;
+  public_chat_streaming_supported?: unknown;
+  public_chat_streaming_protocol?: unknown;
 };
 
 function noStoreJson(
@@ -71,7 +73,9 @@ export async function GET(): Promise<NextResponse> {
     health.product === "PruvAI" &&
     health.enabled === true &&
     health.external_ai_api_used === false &&
-    health.direct_product_api_exposed === false;
+    health.direct_product_api_exposed === false &&
+    health.public_chat_streaming_supported === true &&
+    health.public_chat_streaming_protocol === "sse";
   return noStoreJson(
     {
       status: ready ? "ready" : "unavailable",

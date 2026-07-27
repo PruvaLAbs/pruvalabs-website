@@ -19,13 +19,13 @@ const SESSION_COOKIE = "pruvai_session";
 const CONVERSATION_COOKIE = "pruvai_conversation";
 const SPONSOR_ACCESS_COOKIE = "pruvai_sponsor_access";
 const MAX_REQUEST_BYTES = 16_384;
+const MAX_FIRST_EVENT_BYTES = 65_536;
+const STREAM_TIMEOUT_MS = 180_000;
 
-type BackendAnswer = {
-  status: string;
-  conversation_id: string;
-  answer: string;
-  model: string | null;
-  external_ai_api_used: boolean;
+type CreatedEvent = {
+  type?: unknown;
+  conversation_id?: unknown;
+  external_ai_api_used?: unknown;
 };
 
 function noStoreJson(
@@ -50,7 +50,33 @@ function requestOrigin(request: Request): string {
   return origin;
 }
 
-export async function POST(request: Request): Promise<NextResponse> {
+function combine(chunks: Uint8Array[], total: number): Uint8Array {
+  const result = new Uint8Array(total);
+  let offset = 0;
+  for (const chunk of chunks) {
+    result.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return result;
+}
+
+function firstEvent(payload: Uint8Array): CreatedEvent {
+  const text = new TextDecoder("utf-8", { fatal: true }).decode(payload);
+  const boundary = text.indexOf("\n\n");
+  if (boundary < 0) {
+    throw new Error("pruvai_stream_first_event_incomplete");
+  }
+  const dataLine = text
+    .slice(0, boundary)
+    .split("\n")
+    .find((line) => line.startsWith("data: "));
+  if (!dataLine) {
+    throw new Error("pruvai_stream_first_event_invalid");
+  }
+  return JSON.parse(dataLine.slice(6)) as CreatedEvent;
+}
+
+export async function POST(request: Request): Promise<Response> {
   const contentLength = Number(request.headers.get("content-length") ?? "0");
   if (
     !Number.isFinite(contentLength) ||
@@ -134,6 +160,7 @@ export async function POST(request: Request): Promise<NextResponse> {
       503,
     );
   }
+
   const existingSession = cookieStore.get(SESSION_COOKIE)?.value;
   const sessionId = validSessionId(existingSession)
     ? existingSession
@@ -141,18 +168,22 @@ export async function POST(request: Request): Promise<NextResponse> {
   const conversationId = openConversationId(
     cookieStore.get(CONVERSATION_COOKIE)?.value,
   );
+  const upstreamAbort = new AbortController();
+  const timeout = setTimeout(
+    () => upstreamAbort.abort(),
+    STREAM_TIMEOUT_MS,
+  );
 
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 30_000);
-  let response: Response;
+  let upstream: Response;
   try {
-    response = await fetch(
-      `${config.backendUrl}/api/v1/public/chat`,
+    upstream = await fetch(
+      `${config.backendUrl}/api/v1/public/chat/stream`,
       {
         method: "POST",
         cache: "no-store",
-        signal: controller.signal,
+        signal: upstreamAbort.signal,
         headers: {
+          Accept: "text/event-stream",
           "Content-Type": "application/json",
           "X-PruvAI-Gateway-Key": config.gatewaySecret,
           "X-PruvAI-Origin": config.gatewayOrigin ?? origin,
@@ -174,28 +205,11 @@ export async function POST(request: Request): Promise<NextResponse> {
       503,
     );
   }
-  clearTimeout(timeout);
 
-  let backend: Partial<BackendAnswer>;
-  try {
-    backend = (await response.json()) as Partial<BackendAnswer>;
-  } catch {
-    return noStoreJson(
-      {
-        status: "unavailable",
-        error_code: "pruvai_response_invalid",
-      },
-      502,
-    );
-  }
-  if (
-    !response.ok ||
-    backend.status !== "answered" ||
-    typeof backend.conversation_id !== "string" ||
-    typeof backend.answer !== "string" ||
-    backend.external_ai_api_used !== false
-  ) {
-    const status = response.status === 429 ? 429 : 503;
+  if (!upstream.ok || !upstream.body) {
+    clearTimeout(timeout);
+    await upstream.body?.cancel().catch(() => undefined);
+    const status = upstream.status === 429 ? 429 : 503;
     return noStoreJson(
       {
         status: status === 429 ? "rate_limited" : "unavailable",
@@ -207,15 +221,115 @@ export async function POST(request: Request): Promise<NextResponse> {
       status,
     );
   }
+  if (
+    !upstream.headers
+      .get("content-type")
+      ?.toLowerCase()
+      .startsWith("text/event-stream")
+  ) {
+    clearTimeout(timeout);
+    upstreamAbort.abort();
+    return noStoreJson(
+      {
+        status: "unavailable",
+        error_code: "pruvai_response_invalid",
+      },
+      502,
+    );
+  }
 
-  const outgoing = noStoreJson(
-    {
-      status: "answered",
-      answer: backend.answer,
-      model: backend.model ?? null,
+  const reader = upstream.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  let prefix: Uint8Array;
+  let created: CreatedEvent;
+  try {
+    while (true) {
+      const next = await reader.read();
+      if (next.done || !next.value) {
+        throw new Error("pruvai_stream_ended_before_created");
+      }
+      chunks.push(next.value);
+      total += next.value.byteLength;
+      if (total > MAX_FIRST_EVENT_BYTES) {
+        throw new Error("pruvai_stream_first_event_too_large");
+      }
+      prefix = combine(chunks, total);
+      if (new TextDecoder().decode(prefix).includes("\n\n")) {
+        created = firstEvent(prefix);
+        break;
+      }
+    }
+  } catch {
+    clearTimeout(timeout);
+    upstreamAbort.abort();
+    await reader.cancel().catch(() => undefined);
+    return noStoreJson(
+      {
+        status: "unavailable",
+        error_code: "pruvai_response_invalid",
+      },
+      502,
+    );
+  }
+
+  if (
+    created.type !== "response.created" ||
+    typeof created.conversation_id !== "string" ||
+    created.external_ai_api_used !== false
+  ) {
+    clearTimeout(timeout);
+    upstreamAbort.abort();
+    await reader.cancel().catch(() => undefined);
+    return noStoreJson(
+      {
+        status: "unavailable",
+        error_code: "pruvai_response_invalid",
+      },
+      502,
+    );
+  }
+
+  const initial = prefix!;
+  const body = new ReadableStream<Uint8Array>({
+    start(controller) {
+      controller.enqueue(initial);
+      void (async () => {
+        try {
+          while (true) {
+            const next = await reader.read();
+            if (next.done) {
+              controller.close();
+              break;
+            }
+            if (next.value) {
+              controller.enqueue(next.value);
+            }
+          }
+        } catch {
+          controller.error(new Error("pruvai_stream_interrupted"));
+        } finally {
+          clearTimeout(timeout);
+          await reader.cancel().catch(() => undefined);
+        }
+      })();
     },
-    200,
-  );
+    async cancel(reason) {
+      clearTimeout(timeout);
+      upstreamAbort.abort(reason);
+      await reader.cancel(reason).catch(() => undefined);
+    },
+  });
+
+  const outgoing = new NextResponse(body, {
+    status: 200,
+    headers: {
+      "Cache-Control": "no-store",
+      "Content-Type": "text/event-stream; charset=utf-8",
+      "X-Accel-Buffering": "no",
+      "X-Content-Type-Options": "nosniff",
+    },
+  });
   const secure = new URL(origin).protocol === "https:";
   outgoing.cookies.set(SESSION_COOKIE, sessionId, {
     httpOnly: true,
@@ -226,7 +340,7 @@ export async function POST(request: Request): Promise<NextResponse> {
   });
   outgoing.cookies.set(
     CONVERSATION_COOKIE,
-    sealConversationId(backend.conversation_id),
+    sealConversationId(created.conversation_id),
     {
       httpOnly: true,
       secure,

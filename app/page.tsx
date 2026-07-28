@@ -5,23 +5,23 @@ import { SiteHeader } from "@/components/site-header";
 const capabilities = [
   {
     number: "01",
-    title: "Soruyu anlar",
-    text: "Niyeti, bağlamı ve konuşmanın yönünü birlikte değerlendirir.",
+    title: "API ile bağlanır",
+    text: "Web, mobil ve kurumsal ürünlere güvenli servis katmanları üzerinden entegre edilir.",
   },
   {
     number: "02",
-    title: "Kanıtı bulur",
-    text: "Yanıtı yüklenen belgeler ve güvenilir bilgi katmanlarıyla temellendirir.",
+    title: "İhtiyaca uyarlanır",
+    text: "Görevleri, veri kaynakları ve yanıt biçimleri kullanım senaryosuna göre yapılandırılır.",
   },
   {
     number: "03",
-    title: "Hafızayı korur",
-    text: "Konuşmanın sürekliliğini bozmadan ilgili geçmişi kullanır.",
+    title: "Kontrollü çalışır",
+    text: "Yetkilendirme, politika, izleme ve insan onayı katmanlarıyla yönetilir.",
   },
   {
     number: "04",
-    title: "Güvenle yanıtlar",
-    text: "Politika ve doğrulama katmanlarından geçen açık cevaplar üretir.",
+    title: "Ürünle büyür",
+    text: "Yeni araçlar, veri kaynakları ve sektörel yetenekler kontrollü biçimde eklenebilir.",
   },
 ];
 
@@ -42,18 +42,18 @@ export default function HomePage() {
         <div className="relative mx-auto grid w-full max-w-7xl gap-14 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:px-10 lg:py-28">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 shadow-sm">
-              <span className="h-2 w-2 rounded-full bg-emerald-500" />
-              PruvAI aktif geliştirmede
+              <span className="h-2 w-2 rounded-full bg-sky-500" />
+              PruvaLabs yapay zekâ teknolojisi
             </div>
 
             <h1 className="mt-7 max-w-4xl text-5xl font-bold tracking-[-0.045em] text-slate-950 sm:text-6xl lg:text-7xl">
-              Yapay zekâ, sade bir deneyimle güçlü olmalı.
+              Yapay zekâyı dijital ürünlerin gerçek bir parçasına dönüştürüyoruz.
             </h1>
 
             <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-              PruvAI; PruvaLabs tarafından geliştirilen, kendi çekirdeği,
-              hafızası, kanıt sistemi ve güvenlik katmanları bulunan yapay zekâ
-              platformudur.
+              PruvAI; PruvaLabs tarafından geliştirilen, API üzerinden
+              kullanılabilen ve farklı ürünlere entegre edilebilen yapay zekâ
+              modeli ve altyapısıdır.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -67,7 +67,7 @@ export default function HomePage() {
                 href="/contact"
                 className="rounded-full border border-slate-300 bg-white px-7 py-4 text-center text-sm font-bold text-slate-800 transition hover:-translate-y-0.5 hover:border-slate-950"
               >
-                Bizimle iletişime geç
+                Entegrasyon hakkında konuşalım
               </Link>
             </div>
           </div>
@@ -85,45 +85,46 @@ export default function HomePage() {
                     <p className="text-xs text-slate-500">PruvaLabs AI</p>
                   </div>
                 </div>
-                <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-                  Yerel çekirdek
+                <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700">
+                  Entegre edilebilir
                 </span>
               </div>
 
-              <div className="py-10 text-center">
-                <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-slate-950 text-xl font-bold text-white">
-                  P
-                </div>
-                <h2 className="mt-5 text-2xl font-bold tracking-tight">
-                  Nasıl yardımcı olabilirim?
+              <div className="py-8">
+                <p className="text-xs font-bold uppercase tracking-[0.25em] text-sky-700">
+                  Tek yapay zekâ çekirdeği
+                </p>
+                <h2 className="mt-3 text-2xl font-bold tracking-tight">
+                  Farklı ürünlere, farklı görevlere uyarlanabilir.
                 </h2>
-                <p className="mt-2 text-sm text-slate-500">
-                  Sorunuzu yazın, birlikte çözelim.
+                <p className="mt-3 text-sm leading-7 text-slate-500">
+                  PruvAI; kullanıcı asistanı, kurumsal bilgi sistemi, analiz,
+                  raporlama ve otomasyon senaryolarında ürünün kendi deneyimi
+                  içinde çalışabilir.
                 </p>
               </div>
 
               <div className="grid gap-2 sm:grid-cols-2">
                 {[
-                  "Bir belgeyi özetle",
-                  "Fikrimi geliştirelim",
-                  "Bir plan hazırla",
-                  "Bilgiyi doğrula",
+                  "Web platformları",
+                  "iOS ve Android",
+                  "Kurumsal yazılımlar",
+                  "Özel API sistemleri",
                 ].map((item) => (
                   <div
                     key={item}
-                    className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600"
+                    className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-600"
                   >
+                    <span className="mr-2 text-sky-600">✓</span>
                     {item}
                   </div>
                 ))}
               </div>
 
-              <div className="mt-4 flex items-center gap-3 rounded-2xl border border-slate-300 bg-white p-3 shadow-sm">
-                <span className="flex-1 text-sm text-slate-400">
-                  PruvAI&apos;a mesaj gönder
-                </span>
-                <span className="grid h-9 w-9 place-items-center rounded-xl bg-slate-950 text-white">
-                  ↑
+              <div className="mt-4 flex items-center justify-between rounded-2xl bg-slate-950 p-4 text-white">
+                <span className="text-sm font-semibold">API · Entegrasyon · Özelleştirme</span>
+                <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/10 text-white">
+                  →
                 </span>
               </div>
             </div>
@@ -134,10 +135,10 @@ export default function HomePage() {
       <section className="mx-auto w-full max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
         <div className="max-w-3xl">
           <p className="text-sm font-bold uppercase tracking-[0.3em] text-sky-700">
-            PruvAI nasıl çalışır?
+            PruvAI nasıl değer sağlar?
           </p>
           <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
-            Cevaptan önce bağlam, kanıt ve güven.
+            Hazır bir sohbet aracı değil, ürün altyapısı.
           </h2>
         </div>
 
@@ -159,24 +160,24 @@ export default function HomePage() {
         <div className="mx-auto grid w-full max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-10">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.3em] text-sky-300">
-              Tek ürün, büyüyen yetenekler
+              Bir modelden daha fazlası
             </p>
             <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
-              PruvAI bir sohbet kutusundan fazlası.
+              PruvAI, yönetilebilir bir yapay zekâ sistemi olarak geliştirildi.
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
-              Belgeyle çalışma, kalıcı konuşmalar, kaynak gösterimi ve güvenli
-              yanıt üretimi aynı çekirdekte birleşir. Yeni araçlar bu temel
-              üzerine kontrollü biçimde eklenir.
+              Karar, kanıt, hafıza, güvenlik ve entegrasyon katmanları aynı
+              altyapıda birleşir. Böylece yapay zekâ, ürünün kurallarına ve
+              operasyonlarına uyum sağlayabilir.
             </p>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
             {[
-              "Kalıcı konuşma hafızası",
-              "Belge temelli yanıtlar",
-              "Kaynak ve kanıt görünürlüğü",
-              "Politika ve güvenlik kontrolleri",
+              "API tabanlı kullanım",
+              "Ürüne özel davranışlar",
+              "Belge ve veri entegrasyonu",
+              "Politika ve erişim kontrolleri",
               "Yerel model çalışma seçeneği",
               "Genişleyebilir araç mimarisi",
             ].map((item) => (
@@ -202,8 +203,9 @@ export default function HomePage() {
               Fikirleri çalışan dijital ürünlere dönüştürüyoruz.
             </h2>
             <p className="mt-6 max-w-xl leading-8 text-slate-600">
-              PruvAI&apos;ı geliştirirken edindiğimiz ürün, yazılım ve yapay zekâ
-              deneyimini farklı dijital ürünlerde de kullanıyoruz.
+              Yapay zekâ modeli ve altyapısı geliştirme yetkinliğimizi; web,
+              mobil, ürün tasarımı ve backend mühendisliği deneyimimizle bir
+              araya getiriyoruz.
             </p>
           </div>
 
@@ -229,11 +231,10 @@ export default function HomePage() {
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <h2 className="text-4xl font-bold tracking-tight">
-                PruvAI&apos;ın gelişimini birlikte şekillendirelim.
+                Ürününüz için yapay zekâ altyapısı geliştirelim.
               </h2>
               <p className="mt-4 max-w-2xl leading-8 text-slate-700">
-                Kullanım senaryonuzu, ihtiyacınızı veya iş birliği fikrinizi
-                bize anlatın.
+                Kullanım senaryonuzu ve entegrasyon ihtiyacınızı bize anlatın.
               </p>
             </div>
             <Link

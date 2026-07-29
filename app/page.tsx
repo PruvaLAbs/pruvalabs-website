@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -34,8 +35,16 @@ const services = [
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#F7F8FA] text-slate-950">
+    <main className="brand-watermark-shell min-h-screen overflow-x-hidden bg-[#F7F8FA] text-slate-950">
       <SiteHeader />
+      <Image
+        src="/pruvalabs-logo.png"
+        alt=""
+        aria-hidden="true"
+        width={788}
+        height={694}
+        className="brand-watermark"
+      />
 
       <section className="relative overflow-hidden border-b border-slate-200 bg-white">
         <div className="absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-sky-100/60 blur-3xl" />

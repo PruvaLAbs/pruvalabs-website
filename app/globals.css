@@ -43,8 +43,39 @@ button {
   animation: pruvai-pulse 5s ease-in-out infinite;
 }
 
+.brand-watermark-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.brand-watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  width: min(70vw, 720px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.055;
+  transform: translate(-50%, -50%);
+}
+
+.brand-watermark ~ section,
+.brand-watermark ~ footer {
+  position: relative;
+  z-index: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pruvai-orb {
     animation: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .brand-watermark {
+    width: min(115vw, 560px);
+    opacity: 0.035;
   }
 }

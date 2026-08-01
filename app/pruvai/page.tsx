@@ -19,6 +19,21 @@ export const metadata: Metadata = {
     description:
       "PruvAI; kanıt, hafıza ve güvenlik katmanlarıyla geliştirilen PruvaLabs yapay zekâ platformudur.",
     url: "/pruvai",
+    images: [
+      {
+        url: "/pruvai-social.png",
+        width: 1200,
+        height: 630,
+        alt: "PruvAI · PruvaLabs yapay zekâsı",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PruvAI | PruvaLabs Yapay Zekâ Platformu",
+    description:
+      "PruvAI; kanıt, hafıza ve güvenlik katmanlarıyla geliştirilen PruvaLabs yapay zekâ platformudur.",
+    images: ["/pruvai-social.png"],
   },
 };
 

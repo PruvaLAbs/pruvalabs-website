@@ -4,34 +4,25 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.pruvalabs.com"),
   title: {
-    default: "PruvaLabs · PruvAI",
+    default: "PruvaLabs",
     template: "%s · PruvaLabs",
   },
   description:
-    "PruvAI; kanıt, hafıza ve güvenlik katmanlarıyla geliştirilen PruvaLabs yapay zekâ platformudur.",
+    "PruvaLabs; yapay zekâ, web, mobil ürünler ve güvenilir dijital altyapılar geliştiren teknoloji laboratuvarıdır.",
   openGraph: {
-    title: "PruvaLabs · PruvAI",
+    title: "PruvaLabs",
     description:
-      "Sade arayüz, güçlü çekirdek ve doğrulanabilir yanıtlar için geliştirilen yapay zekâ.",
+      "Yapay zekâ, web, mobil ürünler ve güvenilir dijital altyapılar geliştiren teknoloji laboratuvarı.",
     url: "https://www.pruvalabs.com",
     siteName: "PruvaLabs",
     locale: "tr_TR",
     type: "website",
-    images: [
-      {
-        url: "/pruvai-social.png",
-        width: 1200,
-        height: 630,
-        alt: "PruvAI · PruvaLabs yapay zekâsı",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "PruvaLabs · PruvAI",
+    title: "PruvaLabs",
     description:
-      "Sade arayüz, güçlü çekirdek ve doğrulanabilir yanıtlar için geliştirilen yapay zekâ.",
-    images: ["/pruvai-social.png"],
+      "Yapay zekâ, web, mobil ürünler ve güvenilir dijital altyapılar geliştiren teknoloji laboratuvarı.",
   },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml", sizes: "any" }],

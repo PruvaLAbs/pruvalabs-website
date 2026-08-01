@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Gizlilik Politikası",
   description:
     "PruvaLabs ürünleri ve PruvAI için gizlilik, veri işleme ve kullanıcı kontrolü yaklaşımı.",
+  alternates: {
+    canonical: "/legal/privacy",
+  },
 };
 
 const sections = [

@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Hizmetler",
   description:
     "PruvaLabs ile web, mobil, yapay zekâ, ürün tasarımı, dashboard ve backend/API çözümlerini inceleyin.",
+  alternates: {
+    canonical: "/services",
+  },
 };
 
 const services = [

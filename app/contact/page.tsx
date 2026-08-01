@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "İletişim",
   description:
     "PruvaLabs ile PruvAI, yapay zekâ sistemleri, ürün geliştirme ve iş birlikleri hakkında iletişime geçin.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {

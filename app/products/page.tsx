@@ -6,6 +6,9 @@ import { SiteHeader } from "@/components/site-header";
 export const metadata: Metadata = {
   title: "Ürünler",
   description: "PruvaLabs ürünleri ve ana yapay zekâ platformu PruvAI.",
+  alternates: {
+    canonical: "/products",
+  },
 };
 
 const productAreas = [

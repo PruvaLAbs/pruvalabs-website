@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Hakkımızda",
   description:
     "PruvaLabs'ın yapay zekâ, web, mobil ve ölçeklenebilir ürün altyapısı geliştirme yaklaşımını keşfedin.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const cards = [

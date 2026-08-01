@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Rehber",
   description:
     "PruvaLabs'tan yapay zekâ, web, mobil ürünler ve dijital operasyonlar için sade teknoloji rehberleri.",
+  alternates: {
+    canonical: "/blog",
+  },
 };
 
 const featuredPosts = [

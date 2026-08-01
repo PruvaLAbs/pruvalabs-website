@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "KVKK ve Veri Yaklaşımı",
   description:
     "PruvaLabs ve PruvAI'ın veri minimizasyonu, şeffaflık ve kullanıcı kontrolü yaklaşımı.",
+  alternates: {
+    canonical: "/legal/kvkk",
+  },
 };
 
 const principles = [

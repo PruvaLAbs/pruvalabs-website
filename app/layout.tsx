@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: "PruvaLabs · PruvAI",
     description:
       "Sade arayüz, güçlü çekirdek ve doğrulanabilir yanıtlar için geliştirilen yapay zekâ.",
-    url: "https://pruvalabs.com",
+    url: "https://www.pruvalabs.com",
     siteName: "PruvaLabs",
     locale: "tr_TR",
     type: "website",

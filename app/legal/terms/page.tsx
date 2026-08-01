@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Kullanım Koşulları",
   description:
     "PruvaLabs web sitesi ve PruvAI ürünleri için kullanım koşulları bilgisi.",
+  alternates: {
+    canonical: "/legal/terms",
+  },
 };
 
 export default function TermsPage() {

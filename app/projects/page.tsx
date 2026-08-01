@@ -6,6 +6,9 @@ import { SiteHeader } from "@/components/site-header";
 export const metadata: Metadata = {
   title: "Projeler",
   description: "PruvaLabs geliştirme alanları ve PruvAI projesi.",
+  alternates: {
+    canonical: "/projects",
+  },
 };
 
 const projects = [

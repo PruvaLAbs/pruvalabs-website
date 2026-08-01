@@ -6,9 +6,41 @@ import { SiteHeader } from "@/components/site-header";
 export const metadata: Metadata = {
   title: "PruvAI | Entegre Edilebilir Yapay Zekâ Teknolojisi",
   description:
-    "PruvAI, PruvaLabs tarafından geliştirilen; API üzerinden kullanılabilen ve dijital ürünlere entegre edilebilen yapay zekâ teknolojisidir.",
+    "PruvAI, PruvaLabs tarafından geliştirilen; dijital ürünlere entegre edilebilen, kanıt, hafıza ve güvenlik katmanlarıyla çalışan yapay zekâ platformudur.",
   alternates: {
     canonical: "/pruvai",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "PruvAI | PruvaLabs Yapay Zekâ Platformu",
+    description:
+      "PruvAI; kanıt, hafıza ve güvenlik katmanlarıyla geliştirilen PruvaLabs yapay zekâ platformudur.",
+    url: "/pruvai",
+  },
+};
+
+const pruvaiJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "PruvAI | PruvaLabs Yapay Zekâ Platformu",
+  url: "https://www.pruvalabs.com/pruvai",
+  dateModified: "2026-08-01",
+  inLanguage: "tr-TR",
+  description:
+    "PruvAI, PruvaLabs tarafından geliştirilen; kanıt, hafıza ve güvenlik katmanlarıyla yanıt üreten çok amaçlı yapay zekâ platformudur.",
+  about: {
+    "@type": "SoftwareApplication",
+    name: "PruvAI",
+    applicationCategory: "Artificial intelligence platform",
+    operatingSystem: "Web",
+    provider: {
+      "@type": "Organization",
+      name: "PruvaLabs",
+      url: "https://www.pruvalabs.com",
+    },
   },
 };
 
@@ -66,6 +98,12 @@ const integrationSteps = [
 export default function PruvAIPage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#F7F8FA] text-slate-950">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pruvaiJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <SiteHeader />
 
       <section className="relative overflow-hidden border-b border-slate-200 bg-white">
@@ -202,6 +240,42 @@ export default function PruvAIPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-5xl px-5 py-16 sm:px-8 lg:py-20">
+        <div className="rounded-[2rem] border border-sky-100 bg-sky-50/70 p-7 sm:p-10">
+          <p className="text-sm font-bold uppercase tracking-[0.3em] text-sky-700">
+            Resmî bilgi ve güven notu
+          </p>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">
+            PruvAI nedir?
+          </h2>
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-700">
+            PruvAI, PruvaLabs tarafından geliştirilen çok amaçlı yapay zekâ
+            platformudur. Yanıt üretirken uygun olduğunda kanıt ve belge
+            bağlamını görünür kılmayı; belirsizlik, kaynak yetersizliği veya
+            erişilemeyen bilgi durumlarında ise bunları açıkça belirtmeyi hedefler.
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {[
+              ["Kaynak", "Desteklenen yanıtlarda dayanağı görünür kılar."],
+              ["Sınır", "Yeterli kanıt yoksa kesinlik iddia etmez."],
+              ["Durum", "Genel kullanıma henüz açılmamıştır."],
+            ].map(([title, text]) => (
+              <article
+                key={title}
+                className="rounded-2xl border border-sky-100 bg-white p-5"
+              >
+                <h3 className="font-bold text-slate-950">{title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
+              </article>
+            ))}
+          </div>
+          <p className="mt-7 text-sm text-slate-500">
+            Son güncelleme: 1 Ağustos 2026 · Bu sayfa PruvAI için PruvaLabs
+            resmî ürün bilgisidir.
+          </p>
         </div>
       </section>
 

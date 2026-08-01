@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+
+export const metadata: Metadata = {
+  title: "Gizlilik Politikası",
+  description:
+    "PruvaLabs ürünleri ve PruvAI için gizlilik, veri işleme ve kullanıcı kontrolü yaklaşımı.",
+};
 
 const sections = [
   {

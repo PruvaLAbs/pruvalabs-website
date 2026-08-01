@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+
+export const metadata: Metadata = {
+  title: "KVKK ve Veri Yaklaşımı",
+  description:
+    "PruvaLabs ve PruvAI'ın veri minimizasyonu, şeffaflık ve kullanıcı kontrolü yaklaşımı.",
+};
 
 const principles = [
   {

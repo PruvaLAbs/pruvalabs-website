@@ -1,4 +1,12 @@
-import Link from "next/link";
+import type { Metadata } from "next";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+
+export const metadata: Metadata = {
+  title: "Rehber",
+  description:
+    "PruvaLabs'tan yapay zekâ, web, mobil ürünler ve dijital operasyonlar için sade teknoloji rehberleri.",
+};
 
 const featuredPosts = [
   {
@@ -60,16 +68,8 @@ const guidePosts = [
 export default function BlogPage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#F6F8FB] text-slate-950">
+      <SiteHeader />
       <section className="mx-auto w-full max-w-7xl px-6 py-8 sm:px-10">
-        <header className="flex items-center justify-between border-b border-slate-200 pb-6">
-          <Link href="/" className="text-sm font-semibold text-sky-700">
-            ← Ana sayfa
-          </Link>
-          <a href="/contact" className="text-sm font-semibold text-slate-600 hover:text-slate-950">
-            İletişim
-          </a>
-        </header>
-
         <section className="py-16">
           <p className="text-sm font-bold uppercase tracking-[0.35em] text-sky-700">
             Blog&Rehber
@@ -162,6 +162,7 @@ export default function BlogPage() {
           </div>
         </section>
       </section>
+      <SiteFooter />
     </main>
   );
 }

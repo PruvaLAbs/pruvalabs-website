@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+
+export const metadata: Metadata = {
+  title: "Hakkımızda",
+  description:
+    "PruvaLabs'ın yapay zekâ, web, mobil ve ölçeklenebilir ürün altyapısı geliştirme yaklaşımını keşfedin.",
+};
 
 const cards = [
   {

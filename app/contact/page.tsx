@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+
+export const metadata: Metadata = {
+  title: "İletişim",
+  description:
+    "PruvaLabs ile PruvAI, yapay zekâ sistemleri, ürün geliştirme ve iş birlikleri hakkında iletişime geçin.",
+};
 
 export default function ContactPage() {
   const contactItems = [
@@ -21,12 +30,9 @@ export default function ContactPage() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#F6F8FB] text-slate-950">
-      <section className="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center px-6 py-16 sm:px-10">
-        <Link href="/" className="text-sm font-semibold text-sky-700">
-          ← Ana sayfa
-        </Link>
-
-        <p className="mt-12 text-sm font-semibold uppercase tracking-[0.35em] text-sky-700">
+      <SiteHeader />
+      <section className="mx-auto w-full max-w-5xl px-6 py-16 sm:px-10 lg:py-24">
+        <p className="text-sm font-semibold uppercase tracking-[0.35em] text-sky-700">
           İletişim
         </p>
 
@@ -59,15 +65,16 @@ export default function ContactPage() {
             kontrolleri açık biçimde yayınlanacaktır.
           </p>
           <div className="mt-4">
-
-          <a href="/legal/kvkk" className="text-sm font-semibold text-sky-700 hover:text-sky-800">
-            KVKK / Veri Açıklaması
-          </a>
-
+            <Link
+              href="/legal/kvkk"
+              className="text-sm font-semibold text-sky-700 hover:text-sky-800"
+            >
+              KVKK / Veri Açıklaması
+            </Link>
           </div>
         </div>
-
       </section>
+      <SiteFooter />
     </main>
   );
 }

@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+
+export const metadata: Metadata = {
+  title: "PruvaLabs | Teknoloji ve Dijital Ürün Laboratuvarı",
+  description:
+    "PruvaLabs; yapay zekâ sistemleri, web uygulamaları, mobil ürünler, tasarım ve backend/API altyapıları geliştiren teknoloji laboratuvarıdır.",
+  alternates: {
+    canonical: "/",
+  },
+};
 
 const capabilities = [
   {

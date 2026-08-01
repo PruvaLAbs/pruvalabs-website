@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+
+export const metadata: Metadata = {
+  title: "Kullanım Koşulları",
+  description:
+    "PruvaLabs web sitesi ve PruvAI ürünleri için kullanım koşulları bilgisi.",
+};
 
 export default function TermsPage() {
   return (

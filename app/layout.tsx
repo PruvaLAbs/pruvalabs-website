@@ -33,6 +33,9 @@ export const metadata: Metadata = {
       "Sade arayüz, güçlü çekirdek ve doğrulanabilir yanıtlar için geliştirilen yapay zekâ.",
     images: ["/pruvai-social.png"],
   },
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml", sizes: "any" }],
+  },
 };
 
 export default function RootLayout({

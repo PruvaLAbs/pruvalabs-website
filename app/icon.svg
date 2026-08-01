@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title>PruvaLabs</title>
+  <rect width="256" height="256" rx="52" fill="#ffffff"/>
+  <path d="M77 38h42l-19 45H58z" fill="#0f2e5d"/>
+  <path d="M126 38h17l48 45h-65z" fill="#1699eb"/>
+  <path d="M69 92h87c39 0 67 25 67 60s-28 60-67 60h-37v-31h35c19 0 32-11 32-29s-13-29-32-29H69z" fill="#0f2e5d"/>
+  <path d="M86 124h35v94H86z" fill="#0f2e5d"/>
+  <path d="M127 156h35v31h44l-24 31h-55z" fill="#1699eb"/>
+</svg>

@@ -30,7 +30,7 @@ export function SiteHeader() {
 
         <nav
           aria-label="Ana menü"
-          className="flex w-full gap-3 overflow-x-auto whitespace-nowrap pb-1 text-sm font-medium text-slate-600 lg:w-auto lg:justify-end lg:gap-7 lg:overflow-visible lg:pb-0"
+          className="flex w-full items-center gap-3 overflow-x-auto whitespace-nowrap pb-1 text-sm font-medium text-slate-600 lg:w-auto lg:justify-end lg:gap-7 lg:overflow-visible lg:pb-0"
         >
           {navItems.map((item) => (
             <Link
@@ -38,8 +38,8 @@ export function SiteHeader() {
               href={item.href}
               className={
                 item.href === "/pruvai"
-                  ? "rounded-full bg-slate-950 px-4 py-2 font-semibold text-white transition hover:bg-slate-800"
-                  : "rounded-full border border-slate-200 bg-white/70 px-4 py-2 transition hover:bg-white hover:text-slate-950 lg:border-0 lg:bg-transparent lg:px-0 lg:py-0"
+                  ? "inline-flex self-center rounded-full bg-slate-950 px-4 py-2 font-semibold leading-none text-white transition hover:bg-slate-800"
+                  : "inline-flex self-center rounded-full border border-slate-200 bg-white/70 px-4 py-2 leading-none transition hover:bg-white hover:text-slate-950 lg:border-0 lg:bg-transparent lg:px-0 lg:py-0"
               }
             >
               {item.label}

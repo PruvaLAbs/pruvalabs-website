@@ -111,6 +111,92 @@ function ProductIcon({ name }: { name: ProductIconName }) {
   );
 }
 
+const labCapabilities: Array<{
+  title: string;
+  label: string;
+  icon: ProductIconName;
+}> = [
+  { title: "Yapay Zekâ", label: "Model · Entegrasyon", icon: "api" },
+  { title: "Web", label: "Platform · Deneyim", icon: "web" },
+  { title: "Mobil", label: "iOS · Android", icon: "mobile" },
+  { title: "Backend", label: "API · Sistem", icon: "business" },
+];
+
+export function PruvaLabsHeroVisual() {
+  return (
+    <div
+      role="img"
+      aria-label="PruvaLabs teknoloji laboratuvarının yapay zekâ, web, mobil ve backend ürün yeteneklerini gösteren görsel"
+      className="relative mx-auto w-full max-w-[35rem] overflow-hidden rounded-[2.25rem] border border-slate-200 bg-white/95 p-4 shadow-2xl shadow-slate-300/45 sm:p-6"
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(186,230,253,0.52),transparent_34%),linear-gradient(to_bottom_right,rgba(248,250,252,0.96),rgba(255,255,255,0.98))]" />
+      <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full border border-sky-100" />
+      <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full border border-sky-100" />
+
+      <div className="relative rounded-[1.75rem] border border-slate-200 bg-white/80 p-5 backdrop-blur sm:p-7">
+        <div className="flex items-center justify-between border-b border-slate-100 pb-5">
+          <div className="flex items-center gap-3">
+            <img
+              src="/pruvalabs-logo.png"
+              alt=""
+              aria-hidden="true"
+              className="h-12 w-12 object-contain"
+            />
+            <div>
+              <p className="font-bold tracking-tight text-slate-950">PruvaLabs.</p>
+              <p className="text-xs text-slate-500">Technology & Product Lab</p>
+            </div>
+          </div>
+          <span className="rounded-full border border-sky-100 bg-sky-50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-sky-700">
+            Build
+          </span>
+        </div>
+
+        <div className="mt-6 rounded-[1.5rem] bg-slate-950 p-5 text-white sm:p-6">
+          <p className="text-xs font-bold uppercase tracking-[0.28em] text-sky-300">
+            Ürün geliştirme sistemi
+          </p>
+          <div className="mt-5 grid grid-cols-4 gap-2 text-center text-[10px] font-bold uppercase tracking-[0.14em] text-slate-300 sm:text-xs">
+            {["Fikir", "Tasarım", "Sistem", "Ürün"].map((item, index) => (
+              <div key={item} className="relative">
+                <div className="mx-auto mb-2 grid h-7 w-7 place-items-center rounded-full border border-white/15 bg-white/10 text-[10px] text-sky-200">
+                  {index + 1}
+                </div>
+                {item}
+                {index < 3 ? (
+                  <span className="absolute left-[72%] top-3 hidden h-px w-[56%] bg-gradient-to-r from-sky-300/60 to-transparent sm:block" />
+                ) : null}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          {labCapabilities.map((item) => (
+            <div
+              key={item.title}
+              className="group flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-sm shadow-slate-200/30 transition hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-lg hover:shadow-slate-200/50"
+            >
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-sky-50 text-sky-700 transition group-hover:bg-sky-100">
+                <ProductIcon name={item.icon} />
+              </span>
+              <span>
+                <span className="block text-sm font-bold text-slate-950">{item.title}</span>
+                <span className="mt-0.5 block text-xs text-slate-500">{item.label}</span>
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-4 flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold text-slate-600">
+          <span>Strateji · Tasarım · Mühendislik</span>
+          <span className="text-sky-700">PruvaLabs.</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const heroNodes: Array<{
   title: string;
   label: string;

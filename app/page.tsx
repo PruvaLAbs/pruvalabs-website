@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  CapabilityIcon,
+  PruvAIFlow,
+  PruvAIHeroVisual,
+} from "@/components/pruvai-visuals";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -15,21 +20,25 @@ export const metadata: Metadata = {
 const capabilities = [
   {
     number: "01",
+    icon: "api" as const,
     title: "API ile bağlanır",
     text: "Web, mobil ve kurumsal ürünlere entegre edilir.",
   },
   {
     number: "02",
+    icon: "adapt" as const,
     title: "İhtiyaca uyarlanır",
     text: "Görevleri ve yanıtları ürüne göre yapılandırılır.",
   },
   {
     number: "03",
+    icon: "control" as const,
     title: "Kontrollü çalışır",
     text: "Yetki, politika ve izleme katmanlarıyla yönetilir.",
   },
   {
     number: "04",
+    icon: "expand" as const,
     title: "Ürünle büyür",
     text: "Yeni veri ve yeteneklerle genişletilebilir.",
   },
@@ -50,7 +59,7 @@ export default function HomePage() {
         src="/pruvalabs-logo.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none fixed left-1/2 top-1/2 z-0 hidden w-[720px] -translate-x-1/2 -translate-y-1/2 opacity-[0.08] lg:block"
+        className="pruvalabs-watermark pointer-events-none fixed left-1/2 top-1/2 z-0 hidden w-[720px] opacity-[0.08] lg:block"
       />
 
       <section className="relative overflow-hidden border-b border-slate-200 bg-white">
@@ -86,61 +95,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-xl">
-            <div className="pruvai-orb absolute -inset-10 rounded-full bg-gradient-to-br from-cyan-100 via-blue-100 to-violet-100 blur-3xl" />
-            <div className="relative rounded-[2rem] border border-slate-200 bg-white p-5 shadow-2xl shadow-slate-300/50 sm:p-7">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-5">
-                <div className="flex items-center gap-3">
-                  <div className="grid h-10 w-10 place-items-center rounded-2xl bg-slate-950 text-sm font-bold text-white">
-                    P
-                  </div>
-                  <div>
-                    <p className="font-bold">PruvAI</p>
-                    <p className="text-xs text-slate-500">PruvaLabs AI</p>
-                  </div>
-                </div>
-                <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700">
-                  Entegre edilebilir
-                </span>
-              </div>
-
-              <div className="py-8">
-                <p className="text-xs font-bold uppercase tracking-[0.25em] text-sky-700">
-                  Tek yapay zekâ çekirdeği
-                </p>
-                <h2 className="mt-3 text-2xl font-bold tracking-tight">
-                  Her ürüne uyarlanır.
-                </h2>
-                <p className="mt-3 text-sm leading-7 text-slate-500">
-                  Asistan, analiz, raporlama ve otomasyon için çalışır.
-                </p>
-              </div>
-
-              <div className="grid gap-2 sm:grid-cols-2">
-                {[
-                  "Web platformları",
-                  "iOS ve Android",
-                  "Kurumsal yazılımlar",
-                  "Özel API sistemleri",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-600"
-                  >
-                    <span className="mr-2 text-sky-600">✓</span>
-                    {item}
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-4 flex items-center justify-between rounded-2xl bg-slate-950 p-4 text-white">
-                <span className="text-sm font-semibold">API · Entegrasyon · Özelleştirme</span>
-                <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/10 text-white">
-                  →
-                </span>
-              </div>
-            </div>
-          </div>
+          <PruvAIHeroVisual />
         </div>
       </section>
 
@@ -158,13 +113,34 @@ export default function HomePage() {
           {capabilities.map((item) => (
             <article
               key={item.number}
-              className="rounded-[1.75rem] border border-slate-200 bg-white p-7 shadow-sm shadow-slate-200/50"
+              className="pruvai-card group rounded-[1.75rem] border border-slate-200 bg-white p-7 shadow-sm shadow-slate-200/50"
             >
-              <p className="text-sm font-bold text-sky-700">{item.number}</p>
+              <div className="flex items-center justify-between">
+                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-sky-50 text-sky-700 transition group-hover:bg-sky-100">
+                  <CapabilityIcon name={item.icon} />
+                </span>
+                <p className="text-sm font-bold text-sky-700">{item.number}</p>
+              </div>
               <h3 className="mt-8 text-2xl font-bold">{item.title}</h3>
               <p className="mt-4 leading-7 text-slate-600">{item.text}</p>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="relative border-y border-slate-200 bg-white py-20 lg:py-24">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="max-w-3xl">
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-sky-700">
+              Nasıl çalışır?
+            </p>
+            <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
+              Üründen kontrollü sonuca.
+            </h2>
+          </div>
+          <div className="mt-10">
+            <PruvAIFlow />
+          </div>
         </div>
       </section>
 
@@ -193,7 +169,7 @@ export default function HomePage() {
             ].map((item) => (
               <div
                 key={item}
-                className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-sm font-semibold text-slate-200"
+                className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-sm font-semibold text-slate-200 transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/10"
               >
                 <span className="mr-3 text-sky-300">✓</span>
                 {item}

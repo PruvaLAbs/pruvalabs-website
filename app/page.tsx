@@ -44,8 +44,14 @@ const services = [
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#F7F8FA] text-slate-950">
+    <main className="relative min-h-screen overflow-x-hidden bg-[#F7F8FA] text-slate-950">
       <SiteHeader />
+      <img
+        src="/pruvalabs-logo.png"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none fixed left-1/2 top-1/2 z-0 hidden w-[720px] -translate-x-1/2 -translate-y-1/2 opacity-[0.08] lg:block"
+      />
 
       <section className="relative overflow-hidden border-b border-slate-200 bg-white">
         <div className="absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-sky-100/60 blur-3xl" />
@@ -138,7 +144,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <section className="relative mx-auto w-full max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
         <div className="max-w-3xl">
           <p className="text-sm font-bold uppercase tracking-[0.3em] text-sky-700">
             PruvAI nasıl değer sağlar?
@@ -162,7 +168,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-slate-950 py-20 text-white lg:py-28">
+      <section className="relative bg-slate-950 py-20 text-white lg:py-28">
         <div className="mx-auto grid w-full max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-10">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.3em] text-sky-300">
@@ -197,7 +203,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <section className="relative mx-auto w-full max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.3em] text-sky-700">
@@ -228,7 +234,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="px-5 pb-20 sm:px-8 lg:px-10">
+      <section className="relative px-5 pb-20 sm:px-8 lg:px-10">
         <div className="mx-auto w-full max-w-7xl rounded-[2rem] bg-sky-100 p-8 sm:p-12">
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>

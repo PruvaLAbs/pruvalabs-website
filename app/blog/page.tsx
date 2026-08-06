@@ -3,7 +3,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: "Rehber",
+  title: "Blog/Rehber",
   description:
     "PruvaLabs'tan yapay zekâ, web, mobil ürünler ve dijital operasyonlar için sade teknoloji rehberleri.",
   alternates: {
@@ -75,7 +75,7 @@ export default function BlogPage() {
       <section className="mx-auto w-full max-w-7xl px-6 py-8 sm:px-10">
         <section className="py-16">
           <p className="text-sm font-bold uppercase tracking-[0.35em] text-sky-700">
-            Blog&Rehber
+            Blog/Rehber
           </p>
 
           <h1 className="mt-6 max-w-4xl text-5xl font-bold tracking-tight sm:text-7xl">

@@ -14,7 +14,7 @@ export function SiteFooter() {
             PruvAI
           </Link>
           <Link href="/blog" className="hover:text-slate-950">
-            Rehber
+            Blog/Rehber
           </Link>
           <Link href="/legal/privacy" className="hover:text-slate-950">
             Gizlilik Politikası

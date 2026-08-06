@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PruvAISimulation } from "@/components/pruvai-ai-simulation";
 import {
   CapabilityIcon,
   PruvAIFlow,
-  PruvAIHeroVisual,
 } from "@/components/pruvai-visuals";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -159,7 +159,7 @@ export default function PruvAIPage() {
             </div>
           </div>
 
-          <PruvAIHeroVisual />
+          <PruvAISimulation />
         </div>
       </section>
 

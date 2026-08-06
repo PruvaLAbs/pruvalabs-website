@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 export const metadata: Metadata = {
   title: "PruvAI | Entegre Edilebilir Yapay Zekâ Teknolojisi",
   description:
-    "PruvAI, PruvaLabs tarafından geliştirilen; dijital ürünlere entegre edilebilen, kanıt, hafıza ve güvenlik katmanlarıyla çalışan yapay zekâ platformudur.",
+    "PruvAI, PruvaLabs tarafından geliştirilen ve dijital ürünlere entegre edilebilen yapay zekâ platformudur.",
   alternates: {
     canonical: "/pruvai",
   },
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "PruvAI | PruvaLabs Yapay Zekâ Platformu",
     description:
-      "PruvAI; kanıt, hafıza ve güvenlik katmanlarıyla geliştirilen PruvaLabs yapay zekâ platformudur.",
+      "PruvAI, dijital ürünlere entegre edilen PruvaLabs yapay zekâ platformudur.",
     url: "/pruvai",
     images: [
       {
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "PruvAI | PruvaLabs Yapay Zekâ Platformu",
     description:
-      "PruvAI; kanıt, hafıza ve güvenlik katmanlarıyla geliştirilen PruvaLabs yapay zekâ platformudur.",
+      "PruvAI, dijital ürünlere entegre edilen PruvaLabs yapay zekâ platformudur.",
     images: ["/pruvai-social.png"],
   },
 };
@@ -42,10 +42,10 @@ const pruvaiJsonLd = {
   "@type": "WebPage",
   name: "PruvAI | PruvaLabs Yapay Zekâ Platformu",
   url: "https://www.pruvalabs.com/pruvai",
-  dateModified: "2026-08-01",
+  dateModified: "2026-08-06",
   inLanguage: "tr-TR",
   description:
-    "PruvAI, PruvaLabs tarafından geliştirilen; kanıt, hafıza ve güvenlik katmanlarıyla yanıt üreten çok amaçlı yapay zekâ platformudur.",
+    "PruvAI, PruvaLabs tarafından geliştirilen çok amaçlı yapay zekâ platformudur.",
   about: {
     "@type": "SoftwareApplication",
     name: "PruvAI",
@@ -62,51 +62,51 @@ const pruvaiJsonLd = {
 const capabilities = [
   {
     number: "01",
-    title: "API ile kullanılabilir",
-    text: "Web, mobil ve kurumsal yazılım altyapılarına güvenli servis katmanları üzerinden bağlanabilir.",
+    title: "API ile bağlanır",
+    text: "Web, mobil ve kurumsal sistemlere entegre edilir.",
   },
   {
     number: "02",
-    title: "Ürüne göre uyarlanabilir",
-    text: "Davranış, görev, veri erişimi ve yanıt biçimleri kullanım senaryosuna göre yapılandırılabilir.",
+    title: "Ürüne uyarlanır",
+    text: "Görevleri ve yanıtları ihtiyaca göre yapılandırılır.",
   },
   {
     number: "03",
     title: "Kontrollü çalışır",
-    text: "Yetkilendirme, politika, insan onayı, izleme ve hata yönetimi ürün akışının parçası olarak ele alınır.",
+    text: "Yetki, politika ve izleme katmanlarıyla yönetilir.",
   },
   {
     number: "04",
-    title: "Genişleyebilir",
-    text: "Yeni veri kaynakları, araçlar ve sektörel yetenekler aynı yapıya kontrollü biçimde eklenebilir.",
+    title: "Genişletilebilir",
+    text: "Yeni veri, araç ve yeteneklerle büyür.",
   },
 ];
 
 const useCases = [
-  "Dijital ürün ve kullanıcı asistanları",
-  "Kurumsal bilgi ve belge sistemleri",
-  "Analiz, özetleme ve raporlama",
-  "İçerik üretimi ve iş akışı otomasyonu",
-  "E-ticaret ve müşteri deneyimi çözümleri",
-  "Sektöre özel yapay zekâ uygulamaları",
+  "Dijital asistanlar",
+  "Kurumsal bilgi sistemleri",
+  "Analiz ve raporlama",
+  "İş akışı otomasyonu",
+  "Müşteri deneyimi",
+  "Sektörel çözümler",
 ];
 
 const integrationSteps = [
   {
-    title: "Kullanım alanı",
-    text: "Yapay zekânın ürün içerisinde üstleneceği görev ve sağlayacağı değer belirlenir.",
+    title: "İhtiyaç",
+    text: "PruvAI'ın üründeki görevi belirlenir.",
   },
   {
-    title: "Sistem analizi",
-    text: "Mevcut altyapı, veri kaynakları, güvenlik gereksinimleri ve bağlantı noktaları incelenir.",
+    title: "Analiz",
+    text: "Altyapı, veri ve güvenlik gereksinimleri incelenir.",
   },
   {
     title: "Yapılandırma",
-    text: "PruvAI davranışları, görev sınırları, yanıt biçimleri ve kontrol kuralları projeye uyarlanır.",
+    text: "Davranışlar ve kontrol kuralları projeye uyarlanır.",
   },
   {
     title: "Entegrasyon",
-    text: "API veya projeye uygun bağlantı yöntemiyle sistem ürüne dahil edilir ve izlenir.",
+    text: "Sistem API ile ürüne bağlanır ve izlenir.",
   },
 ];
 
@@ -132,22 +132,20 @@ export default function PruvAIPage() {
               PruvAI
             </h1>
             <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-600 sm:text-xl">
-              PruvaLabs tarafından geliştirilen; API üzerinden kullanılabilen,
-              mevcut sistemlere entegre edilebilen ve farklı kullanım alanlarına
-              göre özelleştirilebilen yapay zekâ modeli ve altyapısı.
+              Ürünlere API ile entegre edilen, ihtiyaca göre uyarlanan yapay zekâ altyapısı.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/contact"
                 className="rounded-full bg-slate-950 px-7 py-4 text-center text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-slate-800"
               >
-                Entegrasyon hakkında görüşelim
+                Entegrasyonu konuşalım
               </Link>
               <a
                 href="#yetenekler"
                 className="rounded-full border border-slate-300 bg-white px-7 py-4 text-center text-sm font-bold text-slate-800 transition hover:-translate-y-0.5 hover:border-slate-950"
               >
-                Teknolojiyi inceleyin
+                Teknolojiyi incele
               </a>
             </div>
           </div>
@@ -174,7 +172,7 @@ export default function PruvAIPage() {
                 {[
                   ["Web platformu", "API bağlantısı"],
                   ["Mobil uygulama", "Özel asistan"],
-                  ["Kurumsal sistem", "Veri ve raporlama"],
+                  ["Kurumsal sistem", "Analiz ve raporlama"],
                 ].map(([product, capability]) => (
                   <div
                     key={product}
@@ -191,8 +189,7 @@ export default function PruvAIPage() {
                   Tek çekirdek
                 </p>
                 <p className="mt-3 leading-7 text-slate-200">
-                  Farklı ürünlere, farklı görevlere ve farklı veri yapılarına
-                  uyarlanabilen yönetilebilir yapay zekâ altyapısı.
+                  Farklı ürünlere ve görevlere uyarlanan yapay zekâ altyapısı.
                 </p>
               </div>
             </div>
@@ -209,9 +206,7 @@ export default function PruvAIPage() {
             Bir sohbet ekranından daha fazlası.
           </h2>
           <p className="mt-6 text-lg leading-8 text-slate-600">
-            PruvAI, ayrı bir uygulamayla sınırlı değildir. Yapay zekâyı web
-            platformlarının, mobil uygulamaların ve kurumsal yazılımların doğal
-            bir parçasına dönüştürmek için geliştirilmiştir.
+            Web, mobil ve kurumsal ürünlerin doğal bir parçası olarak çalışır.
           </p>
         </div>
 
@@ -236,11 +231,10 @@ export default function PruvAIPage() {
               Kullanım alanları
             </p>
             <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
-              Her ürüne aynı yapay zekâyı eklemiyoruz.
+              Her ürüne özel yapılandırılır.
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
-              Model davranışları, veri kaynakları, erişim izinleri, görevler ve
-              yanıt biçimleri projenin ihtiyacına göre yapılandırılır.
+              Görevler, veri erişimi ve yanıt biçimi ihtiyaca göre belirlenir.
             </p>
           </div>
 
@@ -261,22 +255,19 @@ export default function PruvAIPage() {
       <section className="mx-auto w-full max-w-5xl px-5 py-16 sm:px-8 lg:py-20">
         <div className="rounded-[2rem] border border-sky-100 bg-sky-50/70 p-7 sm:p-10">
           <p className="text-sm font-bold uppercase tracking-[0.3em] text-sky-700">
-            Resmî bilgi ve güven notu
+            Resmî ürün bilgisi
           </p>
           <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">
-            PruvAI nedir?
+            Güvenilir yapay zekâ yaklaşımı.
           </h2>
           <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-700">
-            PruvAI, PruvaLabs tarafından geliştirilen çok amaçlı yapay zekâ
-            platformudur. Yanıt üretirken uygun olduğunda kanıt ve belge
-            bağlamını görünür kılmayı; belirsizlik, kaynak yetersizliği veya
-            erişilemeyen bilgi durumlarında ise bunları açıkça belirtmeyi hedefler.
+            PruvAI, kaynakları görünür kılmayı ve belirsizliği açıkça belirtmeyi hedefler.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             {[
-              ["Kaynak", "Desteklenen yanıtlarda dayanağı görünür kılar."],
-              ["Sınır", "Yeterli kanıt yoksa kesinlik iddia etmez."],
-              ["Durum", "Genel kullanıma henüz açılmamıştır."],
+              ["Kaynak", "Yanıtın dayanağını gösterir."],
+              ["Sınır", "Kanıt yoksa kesinlik iddia etmez."],
+              ["Durum", "Genel kullanıma henüz açık değildir."],
             ].map(([title, text]) => (
               <article
                 key={title}
@@ -288,8 +279,7 @@ export default function PruvAIPage() {
             ))}
           </div>
           <p className="mt-7 text-sm text-slate-500">
-            Son güncelleme: 1 Ağustos 2026 · Bu sayfa PruvAI için PruvaLabs
-            resmî ürün bilgisidir.
+            Son güncelleme: 6 Ağustos 2026 · PruvaLabs resmî ürün bilgisi.
           </p>
         </div>
       </section>
@@ -301,12 +291,10 @@ export default function PruvAIPage() {
               Entegrasyon yaklaşımı
             </p>
             <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
-              Mevcut sisteminizi değiştirmeden yapay zekâ yetenekleri kazandırın.
+              Mevcut ürünü değiştirmeden yapay zekâ ekleyin.
             </h2>
             <p className="mt-6 leading-8 text-slate-600">
-              Yapay zekânın ürün içerisindeki görevi, teknik altyapısı ve güvenli
-              çalışma sınırları birlikte belirlenir. Entegrasyon, ürünün mevcut
-              deneyimini koruyacak şekilde planlanır.
+              Entegrasyon, ürün deneyimini ve güvenlik sınırlarını koruyacak şekilde planlanır.
             </p>
           </div>
 
@@ -333,11 +321,10 @@ export default function PruvAIPage() {
                 PruvaLabs AI
               </p>
               <h2 className="mt-4 text-4xl font-bold tracking-tight">
-                Ürününüz için yapay zekâ altyapısı geliştirelim.
+                Ürününüzü PruvAI ile güçlendirelim.
               </h2>
               <p className="mt-4 max-w-2xl leading-8 text-slate-700">
-                Kullanım senaryonuzu paylaşın; PruvAI&apos;ın ürününüze nasıl
-                entegre edilebileceğini birlikte değerlendirelim.
+                Kullanım senaryonuzu paylaşın.
               </p>
             </div>
             <Link

@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 export const metadata: Metadata = {
   title: "PruvaLabs | Teknoloji ve Dijital Ürün Laboratuvarı",
   description:
-    "PruvaLabs; yapay zekâ sistemleri, web uygulamaları, mobil ürünler, tasarım ve backend/API altyapıları geliştiren teknoloji laboratuvarıdır.",
+    "PruvaLabs; yapay zekâ, web, mobil ve backend ürünleri geliştiren teknoloji laboratuvarıdır.",
   alternates: {
     canonical: "/",
   },
@@ -16,22 +16,22 @@ const capabilities = [
   {
     number: "01",
     title: "API ile bağlanır",
-    text: "Web, mobil ve kurumsal ürünlere güvenli servis katmanları üzerinden entegre edilir.",
+    text: "Web, mobil ve kurumsal ürünlere entegre edilir.",
   },
   {
     number: "02",
     title: "İhtiyaca uyarlanır",
-    text: "Görevleri, veri kaynakları ve yanıt biçimleri kullanım senaryosuna göre yapılandırılır.",
+    text: "Görevleri ve yanıtları ürüne göre yapılandırılır.",
   },
   {
     number: "03",
     title: "Kontrollü çalışır",
-    text: "Yetkilendirme, politika, izleme ve insan onayı katmanlarıyla yönetilir.",
+    text: "Yetki, politika ve izleme katmanlarıyla yönetilir.",
   },
   {
     number: "04",
     title: "Ürünle büyür",
-    text: "Yeni araçlar, veri kaynakları ve sektörel yetenekler kontrollü biçimde eklenebilir.",
+    text: "Yeni veri ve yeteneklerle genişletilebilir.",
   },
 ];
 
@@ -57,13 +57,11 @@ export default function HomePage() {
             </div>
 
             <h1 className="mt-7 max-w-4xl text-5xl font-bold tracking-[-0.045em] text-slate-950 sm:text-6xl lg:text-7xl">
-              Yapay zekâyı dijital ürünlerin gerçek bir parçasına dönüştürüyoruz.
+              Yapay zekâyı ürünlerin gerçek bir parçasına dönüştürüyoruz.
             </h1>
 
             <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-              PruvAI; PruvaLabs tarafından geliştirilen, API üzerinden
-              kullanılabilen ve farklı ürünlere entegre edilebilen yapay zekâ
-              modeli ve altyapısıdır.
+              PruvAI, ürünlere API ile entegre edilen PruvaLabs yapay zekâ altyapısıdır.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -77,7 +75,7 @@ export default function HomePage() {
                 href="/contact"
                 className="rounded-full border border-slate-300 bg-white px-7 py-4 text-center text-sm font-bold text-slate-800 transition hover:-translate-y-0.5 hover:border-slate-950"
               >
-                Entegrasyon hakkında konuşalım
+                Entegrasyonu konuşalım
               </Link>
             </div>
           </div>
@@ -105,12 +103,10 @@ export default function HomePage() {
                   Tek yapay zekâ çekirdeği
                 </p>
                 <h2 className="mt-3 text-2xl font-bold tracking-tight">
-                  Farklı ürünlere, farklı görevlere uyarlanabilir.
+                  Her ürüne uyarlanır.
                 </h2>
                 <p className="mt-3 text-sm leading-7 text-slate-500">
-                  PruvAI; kullanıcı asistanı, kurumsal bilgi sistemi, analiz,
-                  raporlama ve otomasyon senaryolarında ürünün kendi deneyimi
-                  içinde çalışabilir.
+                  Asistan, analiz, raporlama ve otomasyon için çalışır.
                 </p>
               </div>
 
@@ -148,7 +144,7 @@ export default function HomePage() {
             PruvAI nasıl değer sağlar?
           </p>
           <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
-            Hazır bir sohbet aracı değil, ürün altyapısı.
+            Bir sohbet aracı değil, ürün altyapısı.
           </h2>
         </div>
 
@@ -173,12 +169,10 @@ export default function HomePage() {
               PruvaLabs teknoloji laboratuvarı
             </p>
             <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
-              Fikirleri çalışan dijital ürünlere dönüştürüyoruz.
+              Fikirden çalışan ürüne.
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
-              PruvaLabs; yapay zekâ sistemleri, web uygulamaları, mobil ürünler
-              ve yönetim panelleri geliştiren bir teknoloji markasıdır. Ürün
-              stratejisini, tasarımı ve mühendisliği aynı yapıda buluşturur.
+              Yapay zekâ, web ve mobil ürünleri tek yapıda geliştiriyoruz.
             </p>
           </div>
 
@@ -210,12 +204,10 @@ export default function HomePage() {
               PruvaLabs
             </p>
             <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
-              Fikirleri çalışan dijital ürünlere dönüştürüyoruz.
+              Uçtan uca ürün geliştirme.
             </h2>
             <p className="mt-6 max-w-xl leading-8 text-slate-600">
-              Yapay zekâ modeli ve altyapısı geliştirme yetkinliğimizi; web,
-              mobil, ürün tasarımı ve backend mühendisliği deneyimimizle bir
-              araya getiriyoruz.
+              Strateji, tasarım, yazılım ve yapay zekâ tek ekipte.
             </p>
           </div>
 
@@ -241,10 +233,10 @@ export default function HomePage() {
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <h2 className="text-4xl font-bold tracking-tight">
-                Ürününüz için yapay zekâ altyapısı geliştirelim.
+                Ürününüzü yapay zekâyla güçlendirelim.
               </h2>
               <p className="mt-4 max-w-2xl leading-8 text-slate-700">
-                Kullanım senaryonuzu ve entegrasyon ihtiyacınızı bize anlatın.
+                Projenizi ve entegrasyon ihtiyacınızı paylaşın.
               </p>
             </div>
             <Link

@@ -39,12 +39,103 @@ button {
   }
 }
 
+@keyframes pruvalabs-watermark-float {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateY(0) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-8px) scale(1.012);
+  }
+}
+
+@keyframes pruvai-core-breathe {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.025);
+  }
+}
+
+@keyframes pruvai-node-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pruvai-line-flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+@keyframes pruvai-arrow-shift {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+}
+
 .pruvai-orb {
   animation: pruvai-pulse 5s ease-in-out infinite;
 }
 
+.pruvalabs-watermark {
+  animation: pruvalabs-watermark-float 14s ease-in-out infinite;
+}
+
+.pruvai-core {
+  animation: pruvai-core-breathe 6s ease-in-out infinite;
+}
+
+.pruvai-node {
+  animation: pruvai-node-float 6s ease-in-out infinite;
+}
+
+.pruvai-flow-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.55;
+  stroke-dasharray: 4 5;
+  vector-effect: non-scaling-stroke;
+  animation: pruvai-line-flow 5s linear infinite;
+}
+
+.pruvai-card {
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.pruvai-card:hover {
+  transform: translateY(-4px);
+  border-color: #bae6fd;
+  box-shadow: 0 20px 45px -28px rgba(15, 23, 42, 0.35);
+}
+
+.pruvai-arrow {
+  animation: pruvai-arrow-shift 2.4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .pruvai-orb {
+  .pruvai-orb,
+  .pruvalabs-watermark,
+  .pruvai-core,
+  .pruvai-node,
+  .pruvai-flow-line,
+  .pruvai-arrow {
     animation: none;
+  }
+
+  .pruvai-card,
+  .pruvai-card:hover {
+    transform: none;
   }
 }

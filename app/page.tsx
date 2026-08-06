@@ -40,15 +40,15 @@ const products = [
     href: "/pruvai",
   },
   {
-    title: "Harbor Puzzle",
-    category: "Mobil oyun",
-    text: "iOS ve Android için geliştirilen liman temalı bulmaca deneyimi.",
+    title: "Mobil Oyunlar",
+    category: "Mobil oyunlar",
+    text: "iOS ve Android için geliştirdiğimiz online ve offline oyun deneyimleri.",
     href: "/projects",
   },
   {
-    title: "Word Hunt Journey",
-    category: "Mobil oyun",
-    text: "Çok dilli kelime bulmaca ve ilerleme deneyimi.",
+    title: "Finans ve Muhasebe",
+    category: "Mobil uygulamalar",
+    text: "Ön muhasebe, finans ve şahıs şirketi yönetimi için geliştirdiğimiz uygulamalar.",
     href: "/projects",
   },
 ];
